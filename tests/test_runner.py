@@ -32,7 +32,7 @@ def test_registry_routes_cat():
 
 
 def test_registry_no_match():
-    filt = get_filter(["docker", "build", "."])
+    filt = get_filter(["kubectl", "get", "pods"])
     assert filt is None
 
 
