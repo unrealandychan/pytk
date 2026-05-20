@@ -1,0 +1,39 @@
+{
+  "name": "pytk-vscode",
+  "displayName": "pytk — Token Killer",
+  "description": "Reduce LLM token usage by filtering verbose shell output in VS Code terminal",
+  "version": "0.1.0",
+  "publisher": "unrealandychan",
+  "engines": { "vscode": "^1.85.0" },
+  "categories": ["Other"],
+  "keywords": ["ai", "tokens", "claude", "codex", "cursor", "terminal"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {"command": "pytk.enable", "title": "pytk: Enable filtering"},
+      {"command": "pytk.disable", "title": "pytk: Disable filtering"},
+      {"command": "pytk.showSavings", "title": "pytk: Show token savings"}
+    ],
+    "configuration": {
+      "title": "pytk",
+      "properties": {
+        "pytk.enabled": {"type": "boolean", "default": true, "description": "Enable pytk terminal output filtering"},
+        "pytk.showStatusBar": {"type": "boolean", "default": true, "description": "Show token savings in status bar"},
+        "pytk.pytk_path": {"type": "string", "default": "pytk", "description": "Path to pytk executable"}
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.3.0",
+    "@vscode/vsce": "^2.22.0"
+  }
+}
