@@ -4,9 +4,12 @@ from pytk.filters.test import TestFilter
 from pytk.filters.grep import GrepFilter
 from pytk.filters.cat import CatFilter
 from pytk.filters.docker import DockerFilter
+from pytk.filters.cargo import CargoFilter
+from pytk.filters.npm import NpmFilter
+from pytk.filters.curl import CurlFilter
 from pytk.filters.base import BaseFilter
 
-FILTERS: list[BaseFilter] = [LsFilter(), GitFilter(), TestFilter(), GrepFilter(), CatFilter(), DockerFilter()]
+FILTERS: list[BaseFilter] = [LsFilter(), GitFilter(), TestFilter(), GrepFilter(), CatFilter(), DockerFilter(), CargoFilter(), NpmFilter(), CurlFilter()]
 
 
 def get_filter(cmd: list[str]) -> BaseFilter | None:
