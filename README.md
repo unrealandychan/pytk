@@ -24,10 +24,10 @@ When AI coding agents (Claude Code, Codex, Cursor, Hermes, etc.) run shell comma
 | `find *.py` | 391 | 391 | **-0%** |
 | `grep 'def '` | 2,892 | 1,384 | **-52%** |
 | `cat cli.py` | 6,127 | 1,049 | **-82%** |
-| `pytest -v` | 3,669 | 3,669 | **-0%** |
-| **Total** | **13,951** | **6,985** | **-50%** |
+| `pytest -v` | 4,015 | 153 | **-96%** |
+| **Total** | **19,939** | **4,765** | **-76%** |
 
-> Commands with 0% savings (git log, find, pytest -v) have filters that preserve structure by design — future versions will add smarter compression for these.
+> Commands with 0% savings (git log, find) have filters that preserve structure by design — future versions will add smarter compression for these.
 
 ---
 
