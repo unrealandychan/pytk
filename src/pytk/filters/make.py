@@ -1,10 +1,11 @@
 import re
-from pytk.filters.base import BaseFilter
+from pytk.filters.base import BaseFilter, cmd_name
 
 
 class MakeFilter(BaseFilter):
     def matches(self, cmd: list[str]) -> bool:
-        return bool(cmd) and cmd[0] in ("make",)
+        n = cmd_name(cmd)
+        return bool(n) and n in ("make",)
 
     def filter(self, output: str, cmd: list[str]) -> str:
         lines = output.splitlines()

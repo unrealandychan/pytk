@@ -1,4 +1,4 @@
-from pytk.filters.base import BaseFilter
+from pytk.filters.base import BaseFilter, cmd_name
 
 MAX_LINES = 200
 HEAD_LINES = 100
@@ -8,7 +8,8 @@ MAX_CONSECUTIVE_BLANK = 2
 
 class CatFilter(BaseFilter):
     def matches(self, cmd: list[str]) -> bool:
-        return bool(cmd) and cmd[0] in ("cat", "head", "tail", "less", "more")
+        n = cmd_name(cmd)
+        return bool(n) and n in ("cat", "head", "tail", "less", "more")
 
     def filter(self, output: str, cmd: list[str]) -> str:
         from pytk.config import load_config, get_filter_config

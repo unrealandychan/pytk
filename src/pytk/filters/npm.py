@@ -1,14 +1,16 @@
 import re
-from pytk.filters.base import BaseFilter
+from pytk.filters.base import BaseFilter, cmd_name
 
 
 class NpmFilter(BaseFilter):
     def matches(self, cmd: list[str]) -> bool:
-        return bool(cmd) and cmd[0] in ('npm', 'yarn', 'pnpm', 'npx')
+        n = cmd_name(cmd)
+        return bool(n) and n in ('npm', 'yarn', 'pnpm', 'npx')
 
     def filter(self, output: str, cmd: list[str]) -> str:
         subcmd = cmd[1] if len(cmd) > 1 else ''
-        tool = cmd[0]
+        n = cmd_name(cmd)
+        tool = n
 
         # npx is its own dispatch
         if tool == 'npx':

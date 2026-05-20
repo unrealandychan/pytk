@@ -51,7 +51,7 @@ COMMANDS = [
     ("find *.py",            "find . -name '*.py' -not -path './.git/*'"),
     ("grep 'def '",          "grep -r 'def ' src/pytk/ --include='*.py' -n"),
     ("cat cli.py",           "cat src/pytk/cli.py"),
-    ("pytest -v",            "python -m pytest tests/ -v 2>&1 || true"),
+    ("pytest -v",            f"{sys.executable} -m pytest tests/ -v 2>&1 || true"),
 ]
 
 

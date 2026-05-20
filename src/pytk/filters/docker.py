@@ -1,20 +1,22 @@
 import re
-from pytk.filters.base import BaseFilter
+from pytk.filters.base import BaseFilter, cmd_name
 from pytk.config import load_config, get_filter_config
 
 
 class DockerFilter(BaseFilter):
     def matches(self, cmd: list[str]) -> bool:
-        return bool(cmd) and cmd[0] in ("docker", "docker-compose")
+        n = cmd_name(cmd)
+        return bool(n) and n in ("docker", "docker-compose")
 
     def filter(self, output: str, cmd: list[str]) -> str:
         cfg = get_filter_config(load_config(), "docker")
         # determine subcommand (handle "docker compose up" vs "docker-compose up")
-        if cmd[0] == "docker" and len(cmd) > 1 and cmd[1] == "compose":
+        n = cmd_name(cmd)
+        if n == "docker" and len(cmd) > 1 and cmd[1] == "compose":
             subcmd = cmd[2] if len(cmd) > 2 else ""
-        elif cmd[0] == "docker-compose" and len(cmd) > 1:
+        elif n == "docker-compose" and len(cmd) > 1:
             subcmd = cmd[1]
-        elif cmd[0] == "docker" and len(cmd) > 1:
+        elif n == "docker" and len(cmd) > 1:
             subcmd = cmd[1]
         else:
             subcmd = ""

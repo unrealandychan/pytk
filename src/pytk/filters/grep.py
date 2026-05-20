@@ -1,6 +1,6 @@
 import re
 from collections import defaultdict
-from pytk.filters.base import BaseFilter
+from pytk.filters.base import BaseFilter, cmd_name
 
 MAX_MATCHES = 50
 MAX_PER_FILE = 5
@@ -9,7 +9,8 @@ SHOW_PER_FILE = 3
 
 class GrepFilter(BaseFilter):
     def matches(self, cmd: list[str]) -> bool:
-        return bool(cmd) and cmd[0] in ("grep", "rg", "ripgrep", "ag")
+        n = cmd_name(cmd)
+        return bool(n) and n in ("grep", "rg", "ripgrep", "ag")
 
     def filter(self, output: str, cmd: list[str]) -> str:
         from pytk.config import load_config, get_filter_config

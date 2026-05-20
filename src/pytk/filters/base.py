@@ -1,4 +1,16 @@
 from abc import ABC, abstractmethod
+import os
+
+
+def cmd_name(cmd: list[str]) -> str:
+    """Return the basename of cmd[0], stripping full paths.
+
+    Handles cases like '/usr/bin/python3' -> 'python3',
+    '/home/user/.venv/bin/pytest' -> 'pytest', 'python' -> 'python'.
+    """
+    if not cmd:
+        return ""
+    return os.path.basename(cmd[0])
 
 
 class BaseFilter(ABC):

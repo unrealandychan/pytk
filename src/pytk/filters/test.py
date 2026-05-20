@@ -1,24 +1,25 @@
 import re
-from pytk.filters.base import BaseFilter
+from pytk.filters.base import BaseFilter, cmd_name
 
 MAX_FAILURE_LINES = 10
 
 
 class TestFilter(BaseFilter):
     def matches(self, cmd: list[str]) -> bool:
-        if not cmd:
+        n = cmd_name(cmd)
+        if not n:
             return False
-        if cmd[0] in ("pytest", "jest"):
+        if n in ("pytest", "jest"):
             return True
-        if cmd[0] in ("npx",) and len(cmd) > 1 and cmd[1] == "jest":
+        if n in ("npx",) and len(cmd) > 1 and cmd[1] == "jest":
             return True
-        if cmd[0] == "python" and len(cmd) > 2 and cmd[1] == "-m" and cmd[2] == "pytest":
+        if n in ("python", "python3") and len(cmd) > 2 and cmd[1] == "-m" and cmd[2] == "pytest":
             return True
-        if cmd[0] == "go" and len(cmd) > 1 and cmd[1] == "test":
+        if n == "go" and len(cmd) > 1 and cmd[1] == "test":
             return True
-        if cmd[0] == "cargo" and len(cmd) > 1 and cmd[1] == "test":
+        if n == "cargo" and len(cmd) > 1 and cmd[1] == "test":
             return True
-        if cmd[0] == "npm" and len(cmd) > 1 and cmd[1] == "test":
+        if n == "npm" and len(cmd) > 1 and cmd[1] == "test":
             return True
         return False
 

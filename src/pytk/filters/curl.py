@@ -1,16 +1,18 @@
 import json
 import re
-from pytk.filters.base import BaseFilter
+from pytk.filters.base import BaseFilter, cmd_name
 
 
 class CurlFilter(BaseFilter):
     def matches(self, cmd: list[str]) -> bool:
-        return bool(cmd) and cmd[0] in ('curl', 'http', 'https', 'wget')
+        n = cmd_name(cmd)
+        return bool(n) and n in ('curl', 'http', 'https', 'wget')
 
     def filter(self, output: str, cmd: list[str]) -> str:
-        if cmd[0] == 'wget':
+        n = cmd_name(cmd)
+        if n == 'wget':
             return self._filter_wget(output)
-        elif cmd[0] in ('http', 'https'):
+        elif n in ('http', 'https'):
             return self._filter_httpie(output)
         else:
             return self._filter_curl(output, cmd)

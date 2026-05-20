@@ -1,20 +1,21 @@
 import re
-from pytk.filters.base import BaseFilter
+from pytk.filters.base import BaseFilter, cmd_name
 
 MAX_LINES = 50
 
 
 class LsFilter(BaseFilter):
     def matches(self, cmd: list[str]) -> bool:
-        return bool(cmd) and cmd[0] in ("ls", "find", "tree")
+        n = cmd_name(cmd)
+        return bool(n) and n in ("ls", "find", "tree")
 
     def filter(self, output: str, cmd: list[str]) -> str:
         lines = output.splitlines()
-
-        if cmd[0] == "tree":
+        n = cmd_name(cmd)
+        if n == "tree":
             return self._truncate(lines)
 
-        if cmd[0] == "find":
+        if n == "find":
             return self._filter_find(lines)
 
         # ls

@@ -1,10 +1,13 @@
 import re
-from pytk.filters.base import BaseFilter
+from pytk.filters.base import BaseFilter, cmd_name
 
 
 class TerraformFilter(BaseFilter):
     def matches(self, cmd: list[str]) -> bool:
-        return bool(cmd) and cmd[0] == "terraform"
+        if not cmd:
+            return False
+        n = cmd_name(cmd)
+        return bool(n) and n == "terraform"
 
     def filter(self, output: str, cmd: list[str]) -> str:
         lines = output.splitlines()

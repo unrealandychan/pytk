@@ -1,11 +1,12 @@
 import re
 import json
-from pytk.filters.base import BaseFilter
+from pytk.filters.base import BaseFilter, cmd_name
 
 
 class KubectlFilter(BaseFilter):
     def matches(self, cmd: list[str]) -> bool:
-        return bool(cmd) and cmd[0] in ('kubectl', 'k')
+        n = cmd_name(cmd)
+        return bool(n) and n in ('kubectl', 'k')
 
     def filter(self, output: str, cmd: list[str]) -> str:
         if len(cmd) < 2:
