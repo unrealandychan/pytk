@@ -1,5 +1,9 @@
+import csv
+import io
 import json
 import sys
+from collections import defaultdict
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import click
@@ -11,6 +15,111 @@ from pytk.filters.registry import FILTERS
 
 console = Console()
 STATS_FILE = Path.home() / ".pytk" / "stats.json"
+
+
+def _parse_since(since_str: str):
+    """Parse a since string like '7d', '30d', '1d' or 'YYYY-MM-DD' to a datetime cutoff."""
+    if since_str is None:
+        return None
+    since_str = since_str.strip()
+    if since_str.endswith("d") and since_str[:-1].isdigit():
+        days = int(since_str[:-1])
+        return datetime.now(timezone.utc) - timedelta(days=days)
+    # Try YYYY-MM-DD
+    try:
+        dt = datetime.strptime(since_str, "%Y-%m-%d")
+        return dt.replace(tzinfo=timezone.utc)
+    except ValueError:
+        raise click.BadParameter(f"Invalid --since value: {since_str!r}. Use '7d', '30d', or 'YYYY-MM-DD'.")
+
+
+def _filter_stats_by_since(records, cutoff):
+    """Filter stat records to those at or after cutoff."""
+    if cutoff is None:
+        return records
+    filtered = []
+    for r in records:
+        ts_str = r.get("ts") or r.get("timestamp")
+        if ts_str is None:
+            continue
+        try:
+            ts_str_clean = ts_str.replace("Z", "+00:00")
+            ts = datetime.fromisoformat(ts_str_clean)
+            if ts.tzinfo is None:
+                ts = ts.replace(tzinfo=timezone.utc)
+            if ts >= cutoff:
+                filtered.append(r)
+        except ValueError:
+            pass
+    return filtered
+
+
+def _compute_rows_totals(records):
+    """Compute by-command rows and totals from records."""
+    by_cmd = defaultdict(lambda: {"orig": 0, "filt": 0, "count": 0})
+    total_orig = 0
+    total_filt = 0
+
+    for r in records:
+        cmd = r.get("cmd") or r.get("command") or "unknown"
+        orig = r.get("orig_chars") or r.get("original_tokens", 0) * 4
+        filt = r.get("filt_chars") or r.get("filtered_tokens", 0) * 4
+        by_cmd[cmd]["orig"] += orig
+        by_cmd[cmd]["filt"] += filt
+        by_cmd[cmd]["count"] += 1
+        total_orig += orig
+        total_filt += filt
+
+    rows = []
+    for cmd, data in sorted(by_cmd.items()):
+        orig_tok = data["orig"] // 4
+        filt_tok = data["filt"] // 4
+        pct = ((orig_tok - filt_tok) / orig_tok * 100) if orig_tok > 0 else 0
+        rows.append({"command": cmd, "runs": data["count"], "original": orig_tok, "filtered": filt_tok, "reduction_pct": round(pct, 1)})
+
+    orig_tok_total = total_orig // 4
+    filt_tok_total = total_filt // 4
+    pct_total = ((orig_tok_total - filt_tok_total) / orig_tok_total * 100) if orig_tok_total > 0 else 0
+    totals = {
+        "runs": len(records),
+        "original_tokens": orig_tok_total,
+        "filtered_tokens": filt_tok_total,
+        "reduction_pct": round(pct_total, 1),
+    }
+    return rows, totals
+
+
+def _format_json(rows, totals, period="all-time"):
+    data = {
+        "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "period": period,
+        "totals": totals,
+        "by_command": rows,
+    }
+    return json.dumps(data, indent=2)
+
+
+def _format_csv(rows, totals):
+    output = io.StringIO()
+    writer = csv.writer(output)
+    writer.writerow(["Command", "Runs", "Original", "Filtered", "Reduction %"])
+    for r in rows:
+        writer.writerow([r["command"], r["runs"], r["original"], r["filtered"], r["reduction_pct"]])
+    writer.writerow(["TOTAL", totals["runs"], totals["original_tokens"], totals["filtered_tokens"], totals["reduction_pct"]])
+    return output.getvalue()
+
+
+def _format_markdown(rows, totals):
+    lines = [
+        "| Command | Runs | Original | Filtered | Savings |",
+        "|---|---|---|---|---|",
+    ]
+    for r in rows:
+        lines.append(f"| {r['command']} | {r['runs']} | {r['original']:,} | {r['filtered']:,} | {r['reduction_pct']:.0f}% |")
+    lines.append(
+        f"| **TOTAL** | **{totals['runs']}** | **{totals['original_tokens']:,}** | **{totals['filtered_tokens']:,}** | **{totals['reduction_pct']:.0f}%** |"
+    )
+    return "\n".join(lines) + "\n"
 
 
 class PytkGroup(click.Group):
@@ -73,10 +182,16 @@ def main(ctx):
 
 
 @main.command()
-def gain():
+@click.option("--format", "-f", "fmt", type=click.Choice(["table", "json", "csv", "markdown"]), default="table", help="Output format")
+@click.option("--since", default=None, help="Filter stats since '7d', '30d', '1d' or 'YYYY-MM-DD'")
+@click.option("--reset", is_flag=True, default=False, help="Clear stats file after printing")
+def gain(fmt, since, reset):
     """Show token savings stats from ~/.pytk/stats.json."""
     if not STATS_FILE.exists():
-        console.print("[yellow]No stats yet. Run some commands with pytk first.[/yellow]")
+        if fmt == "table":
+            console.print("[yellow]No stats yet. Run some commands with pytk first.[/yellow]")
+        else:
+            click.echo("No stats yet.")
         return
 
     records = []
@@ -89,53 +204,56 @@ def gain():
                 except json.JSONDecodeError:
                     pass
 
+    cutoff = _parse_since(since)
+    records = _filter_stats_by_since(records, cutoff)
+    period = since if since else "all-time"
+
     if not records:
-        console.print("[yellow]No stats yet.[/yellow]")
+        if fmt == "table":
+            console.print("[yellow]No stats yet.[/yellow]")
+        else:
+            click.echo("No stats yet.")
+        if reset and STATS_FILE.exists():
+            STATS_FILE.unlink()
         return
 
-    from collections import defaultdict
-    by_cmd: dict[str, dict] = defaultdict(lambda: {"orig": 0, "filt": 0, "count": 0})
-    total_orig = 0
-    total_filt = 0
+    rows, totals = _compute_rows_totals(records)
 
-    for r in records:
-        cmd = r.get("cmd", "unknown")
-        by_cmd[cmd]["orig"] += r.get("orig_chars", 0)
-        by_cmd[cmd]["filt"] += r.get("filt_chars", 0)
-        by_cmd[cmd]["count"] += 1
-        total_orig += r.get("orig_chars", 0)
-        total_filt += r.get("filt_chars", 0)
+    if fmt == "json":
+        click.echo(_format_json(rows, totals, period=period))
+    elif fmt == "csv":
+        click.echo(_format_csv(rows, totals), nl=False)
+    elif fmt == "markdown":
+        click.echo(_format_markdown(rows, totals), nl=False)
+    else:
+        table = Table(title="pytk Token Savings", show_header=True, header_style="bold cyan")
+        table.add_column("Command", style="bold")
+        table.add_column("Runs", justify="right")
+        table.add_column("Orig tokens", justify="right")
+        table.add_column("Filt tokens", justify="right")
+        table.add_column("Saved", justify="right", style="green")
+        table.add_column("Reduction", justify="right", style="green")
 
-    table = Table(title="pytk Token Savings", show_header=True, header_style="bold cyan")
-    table.add_column("Command", style="bold")
-    table.add_column("Runs", justify="right")
-    table.add_column("Orig tokens", justify="right")
-    table.add_column("Filt tokens", justify="right")
-    table.add_column("Saved", justify="right", style="green")
-    table.add_column("Reduction", justify="right", style="green")
+        for r in rows:
+            saved = r["original"] - r["filtered"]
+            table.add_row(r["command"], str(r["runs"]), str(r["original"]), str(r["filtered"]), str(saved), f"{r['reduction_pct']:.0f}%")
 
-    for cmd, data in sorted(by_cmd.items()):
-        orig_tok = data["orig"] // 4
-        filt_tok = data["filt"] // 4
-        saved = orig_tok - filt_tok
-        pct = (saved / orig_tok * 100) if orig_tok > 0 else 0
-        table.add_row(cmd, str(data["count"]), str(orig_tok), str(filt_tok), str(saved), f"{pct:.0f}%")
+        orig_tok_total = totals["original_tokens"]
+        filt_tok_total = totals["filtered_tokens"]
+        saved_total = orig_tok_total - filt_tok_total
+        table.add_row(
+            "[bold]TOTAL[/bold]",
+            str(totals["runs"]),
+            str(orig_tok_total),
+            str(filt_tok_total),
+            str(saved_total),
+            f"{totals['reduction_pct']:.0f}%",
+            style="bold",
+        )
+        console.print(table)
 
-    orig_tok_total = total_orig // 4
-    filt_tok_total = total_filt // 4
-    saved_total = orig_tok_total - filt_tok_total
-    pct_total = (saved_total / orig_tok_total * 100) if orig_tok_total > 0 else 0
-    table.add_row(
-        "[bold]TOTAL[/bold]",
-        str(len(records)),
-        str(orig_tok_total),
-        str(filt_tok_total),
-        str(saved_total),
-        f"{pct_total:.0f}%",
-        style="bold",
-    )
-
-    console.print(table)
+    if reset and STATS_FILE.exists():
+        STATS_FILE.unlink()
 
 
 @main.command(name="init")

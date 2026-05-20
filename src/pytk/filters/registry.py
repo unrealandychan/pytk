@@ -7,9 +7,10 @@ from pytk.filters.docker import DockerFilter
 from pytk.filters.cargo import CargoFilter
 from pytk.filters.npm import NpmFilter
 from pytk.filters.curl import CurlFilter
+from pytk.filters.kubectl import KubectlFilter
 from pytk.filters.base import BaseFilter
 
-FILTERS: list[BaseFilter] = [LsFilter(), GitFilter(), TestFilter(), GrepFilter(), CatFilter(), DockerFilter(), CargoFilter(), NpmFilter(), CurlFilter()]
+FILTERS: list[BaseFilter] = [LsFilter(), GitFilter(), TestFilter(), GrepFilter(), CatFilter(), DockerFilter(), CargoFilter(), NpmFilter(), CurlFilter(), KubectlFilter()]
 
 
 def get_filter(cmd: list[str]) -> BaseFilter | None:

@@ -32,7 +32,7 @@ def test_registry_routes_cat():
 
 
 def test_registry_no_match():
-    filt = get_filter(["kubectl", "get", "pods"])
+    filt = get_filter(["unknowncmd123", "get", "pods"])
     assert filt is None
 
 
