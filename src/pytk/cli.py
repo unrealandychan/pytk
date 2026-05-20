@@ -126,8 +126,23 @@ class PytkGroup(click.Group):
     """Click Group that falls through to run_filtered for unknown subcommands."""
 
     def parse_args(self, ctx, args):
-        # Store all args in protected_args; we'll dispatch manually in invoke
-        ctx.protected_args = list(args)
+        # Extract --dry-run and --no-cache before storing remaining args
+        dry_run = False
+        no_cache = False
+        remaining = []
+        i = 0
+        while i < len(args):
+            if args[i] == "--dry-run":
+                dry_run = True
+            elif args[i] == "--no-cache":
+                no_cache = True
+            else:
+                remaining.append(args[i])
+            i += 1
+        ctx.params["dry_run"] = dry_run
+        ctx.params["no_cache"] = no_cache
+        # Store all remaining args in protected_args; we'll dispatch manually in invoke
+        ctx.protected_args = remaining
         ctx.args = []
         return []
 
@@ -154,7 +169,9 @@ class PytkGroup(click.Group):
             # Unknown command — proxy through run_filtered
             with ctx:
                 super(click.Group, self).invoke(ctx)
-            filtered_output, exit_code, stats = run_filtered(args)
+            dry_run = ctx.params.get("dry_run", False)
+            no_cache = ctx.params.get("no_cache", False)
+            filtered_output, exit_code, stats = run_filtered(args, dry_run=dry_run, no_cache=no_cache)
             click.echo(filtered_output, nl=False)
             if filtered_output and not filtered_output.endswith("\n"):
                 click.echo()
@@ -162,8 +179,10 @@ class PytkGroup(click.Group):
 
 
 @click.group(cls=PytkGroup, invoke_without_command=True)
+@click.option("--dry-run", is_flag=True, default=False, help="Run command, apply filter, print prefixed output; do not update stats.")
+@click.option("--no-cache", "no_cache", is_flag=True, default=False, help="Bypass output cache for this invocation")
 @click.pass_context
-def main(ctx):
+def main(ctx, dry_run, no_cache):
     """pytk — CLI proxy that reduces LLM token consumption.
 
     \b
@@ -646,6 +665,15 @@ def config_set(key: str, value: str):
     with open(cfg_path, "wb") as f:
         tomli_w.dump(existing, f)
     click.echo(f"Set {key} = {d[last]} in .pytk.toml")
+
+
+@main.command(name="doctor")
+def doctor_cmd():
+    """Check pytk environment and print a health report."""
+    from pytk.doctor import run_doctor
+    import sys
+    exit_code = run_doctor()
+    sys.exit(exit_code)
 
 
 @main.command(name="list-filters")

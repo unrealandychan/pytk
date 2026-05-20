@@ -5,6 +5,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from pytk.filters.registry import get_filter
+from pytk import cache as _cache_mod
 
 STATS_FILE = Path.home() / ".pytk" / "stats.json"
 
@@ -25,8 +26,18 @@ def run(cmd: list[str], capture_env: bool = True) -> tuple[str, int]:
         return f"pytk: command not found: {cmd[0]}\n", 127
 
 
-def run_filtered(cmd: list[str]) -> tuple[str, int, dict]:
+def run_filtered(cmd: list[str], no_cache: bool = False, dry_run: bool = False) -> tuple[str, int, dict]:
     """Run cmd, apply filter, return (filtered_output, exit_code, stats)."""
+    command_str = " ".join(cmd)
+    cwd = os.getcwd()
+    ttl = _cache_mod.DEFAULT_TTL
+
+    if not no_cache and _cache_mod.is_cacheable(command_str):
+        cached = _cache_mod.get(command_str, cwd, ttl)
+        if cached is not None:
+            stats = {"original_chars": len(cached), "filtered_chars": len(cached), "filter_name": "cache"}
+            return cached, 0, stats
+
     output, exit_code = run(cmd)
     filt = get_filter(cmd)
 
@@ -47,7 +58,19 @@ def run_filtered(cmd: list[str]) -> tuple[str, int, dict]:
         "filter_name": filter_name,
     }
 
+    if dry_run:
+        prefixed_lines = "\n".join(
+            f"[DRY-RUN] {line}" for line in filtered_output.splitlines()
+        )
+        if filtered_output.endswith("\n"):
+            prefixed_lines += "\n"
+        return prefixed_lines, exit_code, stats
+
     _append_stats(cmd, stats)
+
+    if not no_cache and _cache_mod.is_cacheable(command_str):
+        _cache_mod.set(command_str, cwd, filtered_output)
+
     return filtered_output, exit_code, stats
 
 
