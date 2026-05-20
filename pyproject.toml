@@ -1,0 +1,29 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pytk"
+version = "0.1.0"
+description = "CLI proxy that reduces LLM token consumption by filtering command outputs"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+dependencies = [
+  "click>=8.1",
+  "rich>=13.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8",
+  "pytest-cov>=5",
+  "pytest-timeout>=2.3",
+  "ruff>=0.4",
+]
+
+[project.scripts]
+pytk = "pytk.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pytk"]
