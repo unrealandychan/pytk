@@ -8,9 +8,12 @@ from pytk.filters.cargo import CargoFilter
 from pytk.filters.npm import NpmFilter
 from pytk.filters.curl import CurlFilter
 from pytk.filters.kubectl import KubectlFilter
+from pytk.filters.make import MakeFilter
+from pytk.filters.terraform import TerraformFilter
+from pytk.filters.package_manager import PackageManagerFilter
 from pytk.filters.base import BaseFilter
 
-FILTERS: list[BaseFilter] = [LsFilter(), GitFilter(), TestFilter(), GrepFilter(), CatFilter(), DockerFilter(), CargoFilter(), NpmFilter(), CurlFilter(), KubectlFilter()]
+FILTERS: list[BaseFilter] = [LsFilter(), GitFilter(), TestFilter(), GrepFilter(), CatFilter(), DockerFilter(), CargoFilter(), NpmFilter(), CurlFilter(), KubectlFilter(), MakeFilter(), TerraformFilter(), PackageManagerFilter()]
 
 
 def get_filter(cmd: list[str]) -> BaseFilter | None:
