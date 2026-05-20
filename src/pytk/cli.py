@@ -406,3 +406,47 @@ def list_filters():
         )
 
     console.print(table)
+
+
+@main.group()
+def hook():
+    """Manage shell hook for automatic command interception."""
+    pass
+
+
+@hook.command("enable")
+@click.option("--shell", default=None, help="Shell type: bash, zsh, fish (auto-detected if omitted)")
+def hook_enable(shell):
+    """Enable pytk shell hook — auto-intercepts commands without pytk prefix."""
+    from pytk.hook import enable_hook
+    already, cfg = enable_hook(shell=shell)
+    if already:
+        click.echo(f"Hook already enabled in {cfg}")
+    else:
+        click.echo(f"Hook enabled in {cfg}")
+        click.echo("Restart your shell or run: source " + cfg)
+
+
+@hook.command("disable")
+@click.option("--shell", default=None, help="Shell type: bash, zsh, fish")
+def hook_disable(shell):
+    """Disable pytk shell hook."""
+    from pytk.hook import disable_hook
+    was_enabled, cfg = disable_hook(shell=shell)
+    if was_enabled:
+        click.echo(f"Hook disabled from {cfg}")
+        click.echo("Restart your shell or run: source " + cfg)
+    else:
+        click.echo(f"Hook not found in {cfg}")
+
+
+@hook.command("status")
+@click.option("--shell", default=None, help="Shell type: bash, zsh, fish")
+def hook_status_cmd(shell):
+    """Show whether pytk hook is active."""
+    from pytk.hook import hook_status
+    status = hook_status(shell=shell)
+    state = "enabled" if status["enabled"] else "disabled"
+    click.echo(f"Hook: {state}")
+    click.echo(f"Shell: {status['shell']}")
+    click.echo(f"Config: {status['config_file']}")
