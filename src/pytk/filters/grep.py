@@ -12,6 +12,10 @@ class GrepFilter(BaseFilter):
         return bool(cmd) and cmd[0] in ("grep", "rg", "ripgrep", "ag")
 
     def filter(self, output: str, cmd: list[str]) -> str:
+        from pytk.config import load_config, get_filter_config
+        cfg = get_filter_config(load_config(), "grep")
+        max_matches = cfg.get("max_results", MAX_MATCHES)
+
         lines = output.splitlines()
         # Strip binary match lines
         lines = [l for l in lines if not re.search(r'Binary file .* matches', l)]
@@ -36,7 +40,7 @@ class GrepFilter(BaseFilter):
         total = 0
 
         for fname, flines in file_matches.items():
-            if total >= MAX_MATCHES:
+            if total >= max_matches:
                 break
             if len(flines) > MAX_PER_FILE:
                 shown = flines[:SHOW_PER_FILE]
@@ -49,12 +53,12 @@ class GrepFilter(BaseFilter):
                 total += len(flines)
 
         for line in unkeyed:
-            if total >= MAX_MATCHES:
+            if total >= max_matches:
                 break
             result.append(line)
             total += 1
 
-        if total >= MAX_MATCHES and len(lines) > MAX_MATCHES:
+        if total >= max_matches and len(lines) > max_matches:
             skipped = len(lines) - MAX_MATCHES
             result.append(f"[... {skipped} more matches truncated]")
 

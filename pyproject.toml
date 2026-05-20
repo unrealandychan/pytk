@@ -12,6 +12,7 @@ license = {text = "MIT"}
 dependencies = [
   "click>=8.1",
   "rich>=13.0",
+  "tomli_w>=1.0",
 ]
 
 [project.optional-dependencies]

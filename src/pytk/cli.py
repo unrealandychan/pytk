@@ -198,6 +198,72 @@ def passthrough(command):
     sys.exit(exit_code)
 
 
+@main.group()
+def config():
+    """Manage pytk configuration."""
+    pass
+
+
+@config.command("show")
+def config_show():
+    """Show effective merged configuration."""
+    import json
+    from pytk.config import load_config
+    cfg = load_config()
+    console = Console()
+    console.print_json(json.dumps(cfg, indent=2))
+
+
+@config.command("get")
+@click.argument("key")
+def config_get(key: str):
+    """Get a config value by dotted key (e.g. filters.cat.max_lines)."""
+    from pytk.config import load_config
+    cfg = load_config()
+    parts = key.split(".")
+    val = cfg
+    for p in parts:
+        if not isinstance(val, dict) or p not in val:
+            click.echo(f"Key not found: {key}", err=True)
+            raise SystemExit(1)
+        val = val[p]
+    click.echo(str(val))
+
+
+@config.command("set")
+@click.argument("key")
+@click.argument("value")
+def config_set(key: str, value: str):
+    """Set a config value in .pytk.toml (project config)."""
+    import tomllib, tomli_w
+    cfg_path = Path(".pytk.toml")
+    if cfg_path.exists():
+        with open(cfg_path, "rb") as f:
+            existing = tomllib.load(f)
+    else:
+        existing = {}
+
+    parts = key.split(".")
+    d = existing
+    for p in parts[:-1]:
+        d = d.setdefault(p, {})
+    last = parts[-1]
+    try:
+        if value.lower() in ("true", "false"):
+            d[last] = value.lower() == "true"
+        else:
+            d[last] = int(value)
+    except ValueError:
+        try:
+            d[last] = float(value)
+        except ValueError:
+            d[last] = value
+
+    with open(cfg_path, "wb") as f:
+        tomli_w.dump(existing, f)
+    click.echo(f"Set {key} = {d[last]} in .pytk.toml")
+
+
 @main.command(name="list-filters")
 def list_filters():
     """Show all registered filters and example savings."""

@@ -11,6 +11,10 @@ class CatFilter(BaseFilter):
         return bool(cmd) and cmd[0] in ("cat", "head", "tail", "less", "more")
 
     def filter(self, output: str, cmd: list[str]) -> str:
+        from pytk.config import load_config, get_filter_config
+        cfg = get_filter_config(load_config(), "cat")
+        max_lines = cfg.get("max_lines", MAX_LINES)
+
         lines = output.splitlines()
 
         # Strip consecutive blank lines
@@ -25,7 +29,7 @@ class CatFilter(BaseFilter):
                 blank_count = 0
                 cleaned.append(line)
 
-        if len(cleaned) <= MAX_LINES:
+        if len(cleaned) <= max_lines:
             return "\n".join(cleaned)
 
         # Truncate: first HEAD_LINES + note + last TAIL_LINES
