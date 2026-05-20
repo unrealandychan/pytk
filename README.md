@@ -4,24 +4,30 @@
 ![MIT License](https://img.shields.io/badge/license-MIT-green)
 ![PyPI](https://img.shields.io/pypi/v/pytk)
 
-> **CLI proxy that reduces LLM token consumption by 75–92%** by filtering and compressing shell command outputs before they reach AI context.
+> **CLI proxy that reduces LLM token consumption by ~50%** by filtering and compressing shell command outputs before they reach AI context.
 
 When AI coding agents (Claude Code, Codex, Cursor, Hermes, etc.) run shell commands, the raw verbose output wastes thousands of tokens per session. `pytk` sits transparently between the agent and the shell — stripping noise, keeping only what matters.
 
 ---
 
-## Token Savings (30-min AI Coding Session)
+## Token Savings — Real Benchmark
 
-| Operation | Frequency | Without pytk | With pytk | Savings |
-|---|---|---|---|---|
-| `ls` / `find` | 10× | ~8,000 | ~2,000 | **-75%** |
-| `cat` / `read` | 20× | ~60,000 | ~12,000 | **-80%** |
-| `grep` / `rg` | 8× | ~10,000 | ~1,800 | **-82%** |
-| `git status` | 10× | ~6,000 | ~1,200 | **-80%** |
-| `git diff` | 5× | ~6,000 | ~600 | **-90%** |
-| `git push/commit` | 8× | ~1,600 | ~128 | **-92%** |
-| `pytest` / `go test` | 5× | ~10,000 | ~750 | **-92%** |
-| **Total** | | **~101,600** | **~18,478** | **-82%** |
+> Measured on pytk's own codebase using [`tiktoken`](https://github.com/openai/tiktoken) (cl100k\_base encoding), 3 runs per command.
+> Run it yourself: `python scripts/benchmark.py`
+
+| Operation | Raw tokens | With pytk | Savings |
+|---|---:|---:|:---:|
+| `git status` | 74 | 7 | **-90%** |
+| `git diff HEAD~1` | 118 | 103 | **-12%** |
+| `git log --oneline -20` | 341 | 341 | **-0%** |
+| `ls -la` | 339 | 41 | **-87%** |
+| `find *.py` | 391 | 391 | **-0%** |
+| `grep 'def '` | 2,892 | 1,384 | **-52%** |
+| `cat cli.py` | 6,127 | 1,049 | **-82%** |
+| `pytest -v` | 3,669 | 3,669 | **-0%** |
+| **Total** | **13,951** | **6,985** | **-50%** |
+
+> Commands with 0% savings (git log, find, pytest -v) have filters that preserve structure by design — future versions will add smarter compression for these.
 
 ---
 
