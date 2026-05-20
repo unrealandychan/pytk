@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "pytk"
+name = "pytk-cli"
 version = "0.2.0"
 description = "CLI proxy that reduces LLM token consumption by filtering command outputs"
 readme = "README.md"
