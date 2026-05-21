@@ -1,5 +1,5 @@
 import re
-from pytk.filters.base import BaseFilter, cmd_name
+from pytk.filters.base import BaseFilter, cmd_name, strip_ansi
 
 
 class TerraformFilter(BaseFilter):
@@ -10,6 +10,7 @@ class TerraformFilter(BaseFilter):
         return bool(n) and n == "terraform"
 
     def filter(self, output: str, cmd: list[str]) -> str:
+        output = strip_ansi(output)
         lines = output.splitlines()
         result = []
         for line in lines:

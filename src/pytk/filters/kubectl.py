@@ -1,6 +1,6 @@
 import re
 import json
-from pytk.filters.base import BaseFilter, cmd_name
+from pytk.filters.base import BaseFilter, cmd_name, strip_ansi
 
 
 class KubectlFilter(BaseFilter):
@@ -9,6 +9,7 @@ class KubectlFilter(BaseFilter):
         return bool(n) and n in ('kubectl', 'k')
 
     def filter(self, output: str, cmd: list[str]) -> str:
+        output = strip_ansi(output)
         if len(cmd) < 2:
             return output
         subcmd = cmd[1]

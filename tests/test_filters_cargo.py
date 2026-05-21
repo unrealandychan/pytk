@@ -75,3 +75,13 @@ def test_cargo_add_compressed():
     Updating Cargo.lock"""
     out = f._filter_add_update(raw)
     assert "serde" in out
+
+
+def test_cargo_run_strips_build_lines():
+    from pytk.filters.cargo import CargoFilter
+    f = CargoFilter()
+    output = 'Compiling myapp v0.1.0\nFinished dev [unoptimized] target(s) in 1.23s\n     Running `target/debug/myapp`\nHello, world!\n'
+    result = f.filter(output, ['cargo', 'run'])
+    assert 'Compiling' not in result
+    assert 'Finished' not in result
+    assert 'Hello, world!' in result

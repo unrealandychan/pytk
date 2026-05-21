@@ -1,5 +1,5 @@
 import re
-from pytk.filters.base import BaseFilter, cmd_name
+from pytk.filters.base import BaseFilter, cmd_name, strip_ansi
 
 
 class CargoFilter(BaseFilter):
@@ -8,6 +8,7 @@ class CargoFilter(BaseFilter):
         return bool(n) and n in ("cargo", "rustc", "rustfmt")
 
     def filter(self, output: str, cmd: list[str]) -> str:
+        output = strip_ansi(output)
         subcmd = cmd[1] if len(cmd) > 1 else ""
         if subcmd in ("build", "check"):
             return self._filter_build(output, {})
@@ -17,6 +18,8 @@ class CargoFilter(BaseFilter):
             return self._filter_clippy(output)
         elif subcmd in ("add", "update"):
             return self._filter_add_update(output)
+        elif subcmd == "run":
+            return self._filter_run(output)
         return output
 
     def _filter_build(self, output: str, cfg: dict) -> str:
@@ -124,6 +127,15 @@ class CargoFilter(BaseFilter):
             # Return non-empty lines
             return "\n".join(l for l in lines if l.strip())
         return "\n".join(result)
+
+    def _filter_run(self, output: str) -> str:
+        lines = output.splitlines()
+        result = []
+        for line in lines:
+            if re.match(r'^\s*(Compiling|Finished|Running|Blocking)', line):
+                continue
+            result.append(line)
+        return '\n'.join(result)
 
     def savings_example(self) -> dict:
         return {

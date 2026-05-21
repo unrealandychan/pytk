@@ -1,5 +1,5 @@
 import re
-from pytk.filters.base import BaseFilter, cmd_name
+from pytk.filters.base import BaseFilter, cmd_name, strip_ansi
 
 MAX_LINES = 50
 
@@ -10,6 +10,7 @@ class LsFilter(BaseFilter):
         return bool(n) and n in ("ls", "find", "tree")
 
     def filter(self, output: str, cmd: list[str]) -> str:
+        output = strip_ansi(output)
         lines = output.splitlines()
         n = cmd_name(cmd)
         if n == "tree":

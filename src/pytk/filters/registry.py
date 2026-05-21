@@ -11,9 +11,12 @@ from pytk.filters.kubectl import KubectlFilter
 from pytk.filters.make import MakeFilter
 from pytk.filters.terraform import TerraformFilter
 from pytk.filters.package_manager import PackageManagerFilter
+from pytk.filters.uv import UvFilter
+from pytk.filters.poetry import PoetryFilter
+from pytk.filters.lint import LintFilter
 from pytk.filters.base import BaseFilter
 
-FILTERS: list[BaseFilter] = [LsFilter(), GitFilter(), TestFilter(), GrepFilter(), CatFilter(), DockerFilter(), CargoFilter(), NpmFilter(), CurlFilter(), KubectlFilter(), MakeFilter(), TerraformFilter(), PackageManagerFilter()]
+FILTERS: list[BaseFilter] = [LsFilter(), GitFilter(), TestFilter(), GrepFilter(), CatFilter(), DockerFilter(), CargoFilter(), NpmFilter(), CurlFilter(), KubectlFilter(), MakeFilter(), TerraformFilter(), PackageManagerFilter(), UvFilter(), PoetryFilter(), LintFilter()]
 
 
 def get_filter(cmd: list[str]) -> BaseFilter | None:

@@ -1,6 +1,6 @@
 import re
 from collections import defaultdict
-from pytk.filters.base import BaseFilter, cmd_name
+from pytk.filters.base import BaseFilter, cmd_name, strip_ansi
 
 MAX_MATCHES = 50
 MAX_PER_FILE = 5
@@ -13,6 +13,7 @@ class GrepFilter(BaseFilter):
         return bool(n) and n in ("grep", "rg", "ripgrep", "ag")
 
     def filter(self, output: str, cmd: list[str]) -> str:
+        output = strip_ansi(output)
         from pytk.config import load_config, get_filter_config
         cfg = get_filter_config(load_config(), "grep")
         max_matches = cfg.get("max_results", MAX_MATCHES)

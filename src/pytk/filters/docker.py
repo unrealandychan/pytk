@@ -1,5 +1,5 @@
 import re
-from pytk.filters.base import BaseFilter, cmd_name
+from pytk.filters.base import BaseFilter, cmd_name, strip_ansi
 from pytk.config import load_config, get_filter_config
 
 
@@ -9,6 +9,7 @@ class DockerFilter(BaseFilter):
         return bool(n) and n in ("docker", "docker-compose")
 
     def filter(self, output: str, cmd: list[str]) -> str:
+        output = strip_ansi(output)
         cfg = get_filter_config(load_config(), "docker")
         # determine subcommand (handle "docker compose up" vs "docker-compose up")
         n = cmd_name(cmd)
@@ -31,6 +32,8 @@ class DockerFilter(BaseFilter):
             return self._filter_build(output)
         elif subcmd in ("up", "down", "start", "stop", "restart"):
             return self._filter_compose_action(output, subcmd)
+        elif subcmd == "inspect":
+            return self._filter_inspect(output)
         return output
 
     def _filter_ps(self, output: str) -> str:
@@ -164,7 +167,37 @@ class DockerFilter(BaseFilter):
             if re.match(r'^Network\s+\S+\s+Created', stripped):
                 result.append(stripped)
                 continue
-        return "\n".join(result) if result else output.strip()
+        return "\n".join(result) if result else output.strip() if output.strip() else ""
+
+    def _filter_inspect(self, output):
+        import json
+        try:
+            data = json.loads(output)
+            if isinstance(data, list):
+                data = data[0] if data else {}
+            result = []
+            if data.get('Id'):
+                result.append(f"Id: {data['Id'][:12]}")
+            name = data.get('Name', '')
+            if name:
+                result.append(f"Name: {name.lstrip('/')}")
+            state = data.get('State', {})
+            if state:
+                result.append(f"Status: {state.get('Status', '?')} (pid={state.get('Pid', '?')})")
+            cfg = data.get('Config', {})
+            if cfg.get('Image'):
+                result.append(f"Image: {cfg['Image']}")
+            ports = data.get('NetworkSettings', {}).get('Ports', {})
+            if ports:
+                port_list = [f"{k}->{v[0]['HostPort']}" for k, v in ports.items() if v]
+                if port_list:
+                    result.append(f"Ports: {', '.join(port_list)}")
+            mounts = data.get('Mounts', [])
+            if mounts:
+                result.append(f"Mounts: {len(mounts)} volume(s)")
+            return '\n'.join(result) if result else output
+        except Exception:
+            return output
 
     def savings_example(self) -> dict:
         return {

@@ -1,5 +1,5 @@
 import re
-from pytk.filters.base import BaseFilter, cmd_name
+from pytk.filters.base import BaseFilter, cmd_name, strip_ansi
 
 
 class PackageManagerFilter(BaseFilter):
@@ -7,9 +7,10 @@ class PackageManagerFilter(BaseFilter):
         if not cmd:
             return False
         n = cmd_name(cmd)
-        return bool(n) and n in ("pip", "pip3", "uv", "poetry")
+        return bool(n) and n in ("pip", "pip3", "poetry")
 
     def filter(self, output: str, cmd: list[str]) -> str:
+        output = strip_ansi(output)
         lines = output.splitlines()
         result = []
         for line in lines:

@@ -147,7 +147,7 @@ class TestPackageManagerFilter:
     def test_matches_commands(self):
         assert self.f.matches(["pip"])
         assert self.f.matches(["pip3"])
-        assert self.f.matches(["uv"])
+        # uv is now handled by UvFilter, not PackageManagerFilter
         assert self.f.matches(["poetry"])
         assert not self.f.matches(["npm"])
         assert not self.f.matches([])

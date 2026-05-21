@@ -1,6 +1,6 @@
 import json
 import re
-from pytk.filters.base import BaseFilter, cmd_name
+from pytk.filters.base import BaseFilter, cmd_name, strip_ansi
 
 
 class CurlFilter(BaseFilter):
@@ -9,6 +9,7 @@ class CurlFilter(BaseFilter):
         return bool(n) and n in ('curl', 'http', 'https', 'wget')
 
     def filter(self, output: str, cmd: list[str]) -> str:
+        output = strip_ansi(output)
         n = cmd_name(cmd)
         if n == 'wget':
             return self._filter_wget(output)

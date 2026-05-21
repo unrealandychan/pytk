@@ -1,5 +1,5 @@
 import re
-from pytk.filters.base import BaseFilter, cmd_name
+from pytk.filters.base import BaseFilter, cmd_name, strip_ansi
 
 MAX_FAILURE_LINES = 10
 
@@ -24,6 +24,7 @@ class TestFilter(BaseFilter):
         return False
 
     def filter(self, output: str, cmd: list[str]) -> str:
+        output = strip_ansi(output)
         lines = output.splitlines()
         result = []
         summary_line = None

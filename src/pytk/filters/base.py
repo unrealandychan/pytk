@@ -1,5 +1,13 @@
 from abc import ABC, abstractmethod
 import os
+import re
+
+_ANSI_RE = re.compile(r'\x1b\[[0-9;]*[mKHFABCDJsurh]')
+
+
+def strip_ansi(text: str) -> str:
+    """Remove ANSI escape sequences from text."""
+    return _ANSI_RE.sub('', text)
 
 
 def cmd_name(cmd: list[str]) -> str:

@@ -1,5 +1,5 @@
 import re
-from pytk.filters.base import BaseFilter, cmd_name
+from pytk.filters.base import BaseFilter, cmd_name, strip_ansi
 
 
 class GitFilter(BaseFilter):
@@ -8,6 +8,7 @@ class GitFilter(BaseFilter):
         return bool(n) and n == "git"
 
     def filter(self, output: str, cmd: list[str]) -> str:
+        output = strip_ansi(output)
         subcmd = cmd[1] if len(cmd) > 1 else ""
         if subcmd == "status":
             return self._filter_status(output)

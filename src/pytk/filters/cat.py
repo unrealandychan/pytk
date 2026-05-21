@@ -1,4 +1,4 @@
-from pytk.filters.base import BaseFilter, cmd_name
+from pytk.filters.base import BaseFilter, cmd_name, strip_ansi
 
 MAX_LINES = 200
 HEAD_LINES = 100
@@ -12,6 +12,7 @@ class CatFilter(BaseFilter):
         return bool(n) and n in ("cat", "head", "tail", "less", "more")
 
     def filter(self, output: str, cmd: list[str]) -> str:
+        output = strip_ansi(output)
         from pytk.config import load_config, get_filter_config
         cfg = get_filter_config(load_config(), "cat")
         max_lines = cfg.get("max_lines", MAX_LINES)

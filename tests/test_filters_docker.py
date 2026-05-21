@@ -102,3 +102,15 @@ def test_docker_compose_via_compose_cmd(f):
     raw = "Creating myapp_web_1 ... done\n"
     out = f.filter(raw, ["docker-compose", "up"])
     assert "myapp_web_1" in out
+
+
+def test_docker_inspect_compresses_json():
+    import json
+    from pytk.filters.docker import DockerFilter
+    f = DockerFilter()
+    sample = json.dumps([{'Id': 'abc123def456789', 'Name': '/mycontainer', 'State': {'Status': 'running', 'Pid': 1234}, 'Config': {'Image': 'nginx:latest'}, 'NetworkSettings': {'Ports': {'80/tcp': [{'HostPort': '8080'}]}}, 'Mounts': [{'Type': 'bind', 'Source': '/data'}]}])
+    result = f.filter(sample, ['docker', 'inspect', 'mycontainer'])
+    assert 'abc123def456' in result
+    assert 'nginx:latest' in result
+    assert 'running' in result
+    assert len(result) < len(sample)
