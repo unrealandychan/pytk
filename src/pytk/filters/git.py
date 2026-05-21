@@ -51,33 +51,44 @@ class GitFilter(BaseFilter):
         result = kept[:100]
         return "\n".join(result)
 
+    # Max characters for commit message in compressed log output
+    _LOG_MSG_MAX = 72
+
+    def _compress_msg(self, msg: str) -> str:
+        """Strip ref decorations and truncate long commit messages."""
+        # Strip "(HEAD -> main, origin/main, tag: v1.0)" style decorations
+        msg = re.sub(r'\s*\(.*?\)\s*', ' ', msg).strip()
+        if len(msg) > self._LOG_MSG_MAX:
+            msg = msg[:self._LOG_MSG_MAX - 1] + "…"
+        return msg
+
     def _filter_log(self, output: str) -> str:
         lines = output.splitlines()
         entries = []
         current_hash = None
         current_msg = None
         for line in lines:
-            # Full log format: "commit <hash>"
+            # Full log format: "commit <hash> (optional decoration)"
             m = re.match(r'^commit ([0-9a-f]{7,40})', line)
             if m:
                 if current_hash and current_msg:
-                    entries.append(f"{current_hash[:7]} {current_msg}")
+                    entries.append(f"{current_hash[:7]} {self._compress_msg(current_msg)}")
                 current_hash = m.group(1)
                 current_msg = None
                 continue
-            # One-line log format: "<hash> <message>"
+            # One-line log format: "<hash> <message with optional decoration>"
             m2 = re.match(r'^([0-9a-f]{7,40})\s+(.*)', line)
             if m2 and not line.startswith(" ") and not line.startswith("Author") and not line.startswith("Date"):
-                entries.append(f"{m2.group(1)[:7]} {m2.group(2)}")
+                entries.append(f"{m2.group(1)[:7]} {self._compress_msg(m2.group(2))}")
                 continue
-            # Skip Author/Date lines
+            # Skip Author/Date/Merge lines
             if line.startswith("Author:") or line.startswith("Date:") or line.startswith("Merge:"):
                 continue
             # Commit message (indented with 4 spaces)
             if line.startswith("    ") and current_hash and current_msg is None:
                 current_msg = line.strip()
         if current_hash and current_msg:
-            entries.append(f"{current_hash[:7]} {current_msg}")
+            entries.append(f"{current_hash[:7]} {self._compress_msg(current_msg)}")
         return "\n".join(entries[:20])
 
     def _filter_action(self, output: str, subcmd: str) -> str:

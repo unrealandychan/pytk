@@ -301,12 +301,28 @@ FILTERS = [..., DockerFilter()]
 
 ## Roadmap
 
-- [ ] `docker ps / logs / build` filter
-- [ ] `kubectl get / describe / logs` filter  
-- [ ] `npm install / yarn` filter
-- [ ] `curl` / `http` response filter
-- [ ] Shell hook mode (auto-intercept without explicit `pytk` prefix)
-- [ ] VS Code extension
+### ✅ Done (v0.2.0)
+- [x] `docker ps / logs / build / compose` filter
+- [x] `kubectl get / describe / logs / rollout` filter
+- [x] `npm / yarn / pnpm / npx` filter
+- [x] `curl` / `wget` response filter
+- [x] Shell hook mode (`pytk hook enable` — auto-intercept without `pytk` prefix)
+- [x] VS Code extension scaffold
+- [x] Claude Code / Cursor / Windsurf / Gemini PreToolUse hooks
+- [x] Output caching, `--dry-run`, `pytk doctor`
+
+### 🔜 Next
+- [ ] **ANSI color stripping** — filters fail silently when output has color codes (`git diff --color`, `pytest --color=yes`)
+- [ ] **`uv run <cmd>` dispatch** — `uv run pytest` should route to TestFilter, not PackageManagerFilter
+- [ ] **Linting filters** — `ruff check`, `mypy`, `flake8`, `tsc --noEmit` (strip passing files, keep errors)
+- [ ] **`python3` shell hook** — `python3 -m pytest` not intercepted by shell hook (`python3` missing from SUPPORTED_CMDS)
+- [ ] **Graceful filter fallback** — if a filter crashes, return raw output instead of propagating exception
+- [ ] **`git diff` / `git status` truncation notice** — add `[... N more lines]` when output is capped
+- [ ] **`global.enabled` / `passthrough_on_error` config** — these keys exist but are not yet wired up
+- [ ] **`cargo run` subcommand** support
+- [ ] **`poetry install` / `poetry run`** support
+- [ ] **`docker inspect`** JSON compression
+- [ ] **VS Code extension** publish to Marketplace
 
 ---
 
