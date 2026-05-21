@@ -1,11 +1,13 @@
 import subprocess
 import json
 import os
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
 from pytk.filters.registry import get_filter
 from pytk import cache as _cache_mod
+from pytk.config import load_config
 
 STATS_FILE = Path.home() / ".pytk" / "stats.json"
 
@@ -41,12 +43,26 @@ def run_filtered(cmd: list[str], no_cache: bool = False, dry_run: bool = False) 
     output, exit_code = run(cmd)
     filt = get_filter(cmd)
 
+    # Check global.enabled config
+    cfg = load_config()
+    passthrough_on_error = cfg.get("global", {}).get("passthrough_on_error", True)
+    if not cfg.get("global", {}).get("enabled", True):
+        return output, exit_code, {"original_chars": len(output), "filtered_chars": len(output), "filter_name": "disabled"}
+
     original_chars = len(output)
     filter_name = "none"
 
     if filt is not None:
-        filtered_output = filt.filter(output, cmd)
-        filter_name = type(filt).__name__
+        try:
+            filtered_output = filt.filter(output, cmd)
+            filter_name = type(filt).__name__
+        except Exception as e:
+            if passthrough_on_error:
+                sys.stderr.write(f"pytk: filter error ({type(filt).__name__}): {e}\n")
+                filtered_output = output
+                filter_name = "passthrough"
+            else:
+                raise
     else:
         filtered_output = output
 

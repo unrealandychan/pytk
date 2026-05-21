@@ -29,7 +29,6 @@ class GitFilter(BaseFilter):
         )
         for line in lines:
             stripped = line.strip()
-            # Strip lines that are hint-like (use "git ..." instructions)
             if re.match(r'^\s*\(use ["\']git', line):
                 continue
             if any(stripped.startswith(p) or line.startswith(p) for p in hint_prefixes_strip):
@@ -37,18 +36,23 @@ class GitFilter(BaseFilter):
             if stripped == "":
                 continue
             kept.append(line)
-        result = kept[:30]
+        cap = 30
+        result = kept[:cap]
+        if len(kept) > cap:
+            result.append(f"[... {len(kept) - cap} more lines not shown]")
         return "\n".join(result)
 
     def _filter_diff(self, output: str) -> str:
         lines = output.splitlines()
         kept = []
         for line in lines:
-            # Strip index lines like "index abc123..def456 100644"
             if re.match(r'^index [0-9a-f]+\.\.[0-9a-f]', line):
                 continue
             kept.append(line)
-        result = kept[:100]
+        cap = 100
+        result = kept[:cap]
+        if len(kept) > cap:
+            result.append(f"[... {len(kept) - cap} more lines not shown]")
         return "\n".join(result)
 
     # Max characters for commit message in compressed log output

@@ -7,7 +7,7 @@ SENTINEL_END = "# <<< pytk hook end <<<"
 
 SUPPORTED_CMDS = [
     "git", "ls", "find", "tree",
-    "pytest", "python",
+    "pytest", "python", "python3",
     "grep", "rg", "ag",
     "cat", "head", "tail",
     "docker", "docker-compose",
