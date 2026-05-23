@@ -1,0 +1,11 @@
+{
+  "rekipedia_version": "0.17.3",
+  "scanned_at": "2026-05-23T04:47:41.409288+00:00",
+  "repo_path": "/Users/eddiechan/PycharmProjects/pytk",
+  "run_id": "24c3eee0-fa62-4257-9e5b-0364ea340f8f",
+  "model": "gpt-5.4-mini",
+  "file_count": 80,
+  "page_count": 19,
+  "embed_model": "text-embedding-3-small",
+  "embedded": true
+}

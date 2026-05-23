@@ -1,0 +1,29 @@
+# Project-level config — overrides ~/.config/rekipedia/config.yml
+# rekipedia configuration — .rekipedia/config.yml
+# Run `reki init` to regenerate this file.
+version: 1
+
+# ── Files to ignore (gitignore-style patterns) ───────────────────────────────
+ignore:
+  - .git
+  - node_modules
+  - __pycache__
+  - .rekipedia
+
+# ── Language filter ───────────────────────────────────────────────────────────
+# Controls which source files are scanned.
+#
+# Supported values:
+#   python, typescript, javascript, go, rust, java, kotlin, ruby,
+#   markdown, yaml, json, toml, sql, shell, docker, terraform, html, css, scss
+#
+# Set to `null` (or remove the key) to scan ALL supported languages — recommended
+# for mixed-language repos (e.g. Python + Go).
+#
+# Examples:
+#   languages: null           # scan everything (DEFAULT)
+#   languages: [python]       # Python only
+#   languages: [python, go]   # Python + Go
+#   languages: [typescript, javascript, go]
+#
+languages:   # null = all languages

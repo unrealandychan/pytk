@@ -1,0 +1,118 @@
+{
+  "run_id": "24c3eee0-fa62-4257-9e5b-0364ea340f8f",
+  "generated_at": "2026-05-23T04:47:41.408435+00:00",
+  "file_count": 80,
+  "symbol_count": 464,
+  "relationship_count": 1973,
+  "nav_order": [
+    "installation-and-setup",
+    "index",
+    "configuration",
+    "repository-structure",
+    "architecture-data-flow",
+    "architecture-overview",
+    "cli-reference",
+    "filters-overview",
+    "module-base-filter",
+    "module-git-filter",
+    "module-docker-filter",
+    "module-curl-filter",
+    "module-cat-filter",
+    "module-grep-filter",
+    "module-cargo-filter",
+    "testing",
+    "technical-debt",
+    "algorithms",
+    "python-api"
+  ],
+  "pages": [
+    {
+      "slug": "installation-and-setup",
+      "title": "Getting Started: Install, Build, and Run from Source"
+    },
+    {
+      "slug": "index",
+      "title": "pytk Developer Landing Page"
+    },
+    {
+      "slug": "configuration",
+      "title": "CLI Configuration Model"
+    },
+    {
+      "slug": "repository-structure",
+      "title": "Repository Map"
+    },
+    {
+      "slug": "architecture-data-flow",
+      "title": "Command Data Flow Through the Pipeline"
+    },
+    {
+      "slug": "architecture-overview",
+      "title": "CLI and Filter Framework Architecture"
+    },
+    {
+      "slug": "cli-reference",
+      "title": "CLI Reference"
+    },
+    {
+      "slug": "filters-overview",
+      "title": "Filter Framework and Built-in Filters"
+    },
+    {
+      "slug": "module-base-filter",
+      "title": "Shared Filter Abstraction"
+    },
+    {
+      "slug": "module-git-filter",
+      "title": "Git Filter Implementation"
+    },
+    {
+      "slug": "module-docker-filter",
+      "title": "Docker Filter Implementation"
+    },
+    {
+      "slug": "module-curl-filter",
+      "title": "Curl/HTTPie/Wget Filter Implementation"
+    },
+    {
+      "slug": "module-cat-filter",
+      "title": "Cat Filter"
+    },
+    {
+      "slug": "module-grep-filter",
+      "title": "Grep Filter Reference"
+    },
+    {
+      "slug": "module-cargo-filter",
+      "title": "Cargo command filter"
+    },
+    {
+      "slug": "testing",
+      "title": "Testing"
+    },
+    {
+      "slug": "technical-debt",
+      "title": "Code Quality Risks and Maintenance Gaps"
+    },
+    {
+      "slug": "algorithms",
+      "title": "Transformation Algorithms in `pytk`"
+    },
+    {
+      "slug": "python-api",
+      "title": "Public Python API Reference"
+    }
+  ],
+  "diagrams": [
+    "module-graph",
+    "class-hierarchy"
+  ],
+  "risks": [],
+  "build_commands": [
+    "pip install build twine",
+    "python -m build"
+  ],
+  "test_commands": [
+    "pytest"
+  ]
+}

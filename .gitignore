@@ -11,3 +11,5 @@ build/
 .ruff_cache/
 .coverage
 htmlcov/
+.rekipedia/store.db
+.mcp.json

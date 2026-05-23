@@ -1,0 +1,4178 @@
+[
+  {
+    "name": "scripts.benchmark",
+    "kind": "module",
+    "file": "scripts/benchmark.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "count_tokens",
+    "kind": "function",
+    "file": "scripts/benchmark.py",
+    "line_start": 26,
+    "line_end": 27,
+    "signature": "count_tokens(text, enc)",
+    "docstring": null
+  },
+  {
+    "name": "run_cmd",
+    "kind": "function",
+    "file": "scripts/benchmark.py",
+    "line_start": 30,
+    "line_end": 41,
+    "signature": "run_cmd(cmd, prefix, cwd)",
+    "docstring": "Run a command (with optional prefix) and return combined stdout+stderr."
+  },
+  {
+    "name": "benchmark",
+    "kind": "function",
+    "file": "scripts/benchmark.py",
+    "line_start": 58,
+    "line_end": 98,
+    "signature": "benchmark(runs, model, cwd)",
+    "docstring": null
+  },
+  {
+    "name": "pytk.__init__",
+    "kind": "module",
+    "file": "src/pytk/__init__.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "pytk.cache",
+    "kind": "module",
+    "file": "src/pytk/cache.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "is_cacheable",
+    "kind": "function",
+    "file": "src/pytk/cache.py",
+    "line_start": 10,
+    "line_end": 12,
+    "signature": "is_cacheable(command)",
+    "docstring": null
+  },
+  {
+    "name": "get",
+    "kind": "function",
+    "file": "src/pytk/cache.py",
+    "line_start": 15,
+    "line_end": 22,
+    "signature": "get(command, cwd, ttl)",
+    "docstring": null
+  },
+  {
+    "name": "set",
+    "kind": "function",
+    "file": "src/pytk/cache.py",
+    "line_start": 25,
+    "line_end": 26,
+    "signature": "set(command, cwd, output)",
+    "docstring": null
+  },
+  {
+    "name": "clear",
+    "kind": "function",
+    "file": "src/pytk/cache.py",
+    "line_start": 29,
+    "line_end": 30,
+    "signature": "clear()",
+    "docstring": null
+  },
+  {
+    "name": "size",
+    "kind": "function",
+    "file": "src/pytk/cache.py",
+    "line_start": 33,
+    "line_end": 34,
+    "signature": "size()",
+    "docstring": null
+  },
+  {
+    "name": "pytk.cli",
+    "kind": "module",
+    "file": "src/pytk/cli.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "_parse_since",
+    "kind": "function",
+    "file": "src/pytk/cli.py",
+    "line_start": 20,
+    "line_end": 33,
+    "signature": "_parse_since(since_str)",
+    "docstring": "Parse a since string like '7d', '30d', '1d' or 'YYYY-MM-DD' to a datetime cutoff."
+  },
+  {
+    "name": "_filter_stats_by_since",
+    "kind": "function",
+    "file": "src/pytk/cli.py",
+    "line_start": 36,
+    "line_end": 54,
+    "signature": "_filter_stats_by_since(records, cutoff)",
+    "docstring": "Filter stat records to those at or after cutoff."
+  },
+  {
+    "name": "_compute_rows_totals",
+    "kind": "function",
+    "file": "src/pytk/cli.py",
+    "line_start": 57,
+    "line_end": 89,
+    "signature": "_compute_rows_totals(records)",
+    "docstring": "Compute by-command rows and totals from records."
+  },
+  {
+    "name": "_format_json",
+    "kind": "function",
+    "file": "src/pytk/cli.py",
+    "line_start": 92,
+    "line_end": 99,
+    "signature": "_format_json(rows, totals, period)",
+    "docstring": null
+  },
+  {
+    "name": "_format_csv",
+    "kind": "function",
+    "file": "src/pytk/cli.py",
+    "line_start": 102,
+    "line_end": 109,
+    "signature": "_format_csv(rows, totals)",
+    "docstring": null
+  },
+  {
+    "name": "_format_markdown",
+    "kind": "function",
+    "file": "src/pytk/cli.py",
+    "line_start": 112,
+    "line_end": 122,
+    "signature": "_format_markdown(rows, totals)",
+    "docstring": null
+  },
+  {
+    "name": "PytkGroup",
+    "kind": "class",
+    "file": "src/pytk/cli.py",
+    "line_start": 125,
+    "line_end": 178,
+    "signature": null,
+    "docstring": "Click Group that falls through to run_filtered for unknown subcommands."
+  },
+  {
+    "name": "PytkGroup.parse_args",
+    "kind": "function",
+    "file": "src/pytk/cli.py",
+    "line_start": 128,
+    "line_end": 147,
+    "signature": "parse_args(self, ctx, args)",
+    "docstring": null
+  },
+  {
+    "name": "PytkGroup.invoke",
+    "kind": "function",
+    "file": "src/pytk/cli.py",
+    "line_start": 149,
+    "line_end": 178,
+    "signature": "invoke(self, ctx)",
+    "docstring": null
+  },
+  {
+    "name": "main",
+    "kind": "function",
+    "file": "src/pytk/cli.py",
+    "line_start": 185,
+    "line_end": 200,
+    "signature": "main(ctx, dry_run, no_cache)",
+    "docstring": "pytk — CLI proxy that reduces LLM token consumption.\n\n\b\nRun any command with filtering:\n  pytk ls -la src/\n  pytk git status\n  pytk pytest tests/\n\n\b\nBuilt-in commands:\n  pytk gain            Show token savings\n  pytk init            Print agent integration instructions\n  pytk list-filters    Show registered filters\n  pytk passthrough     Run command without filtering"
+  },
+  {
+    "name": "gain",
+    "kind": "function",
+    "file": "src/pytk/cli.py",
+    "line_start": 207,
+    "line_end": 275,
+    "signature": "gain(fmt, since, reset)",
+    "docstring": "Show token savings stats from ~/.pytk/stats.json."
+  },
+  {
+    "name": "_install_windsurf",
+    "kind": "function",
+    "file": "src/pytk/cli.py",
+    "line_start": 323,
+    "line_end": 338,
+    "signature": "_install_windsurf(agent_cwd)",
+    "docstring": "Append pytk section to .windsurfrules (create if not exists)."
+  },
+  {
+    "name": "_install_gemini_hook",
+    "kind": "function",
+    "file": "src/pytk/cli.py",
+    "line_start": 376,
+    "line_end": 424,
+    "signature": "_install_gemini_hook(agent_cwd)",
+    "docstring": "Install Gemini CLI BeforeTool hook files in current directory."
+  },
+  {
+    "name": "_install_claude_hook",
+    "kind": "function",
+    "file": "src/pytk/cli.py",
+    "line_start": 427,
+    "line_end": 477,
+    "signature": "_install_claude_hook()",
+    "docstring": "Install Claude Code PreToolUse hook files in current directory."
+  },
+  {
+    "name": "_install_cursor_rules",
+    "kind": "function",
+    "file": "src/pytk/cli.py",
+    "line_start": 519,
+    "line_end": 533,
+    "signature": "_install_cursor_rules(project_dir)",
+    "docstring": "Install Cursor rules file in the project directory."
+  },
+  {
+    "name": "init_cmd",
+    "kind": "function",
+    "file": "src/pytk/cli.py",
+    "line_start": 538,
+    "line_end": 591,
+    "signature": "init_cmd(agent)",
+    "docstring": "Print integration instructions for AI coding agents."
+  },
+  {
+    "name": "passthrough",
+    "kind": "function",
+    "file": "src/pytk/cli.py",
+    "line_start": 596,
+    "line_end": 601,
+    "signature": "passthrough(command)",
+    "docstring": "Run command without any filtering (escape hatch)."
+  },
+  {
+    "name": "config",
+    "kind": "function",
+    "file": "src/pytk/cli.py",
+    "line_start": 605,
+    "line_end": 607,
+    "signature": "config()",
+    "docstring": "Manage pytk configuration."
+  },
+  {
+    "name": "config_show",
+    "kind": "function",
+    "file": "src/pytk/cli.py",
+    "line_start": 611,
+    "line_end": 617,
+    "signature": "config_show()",
+    "docstring": "Show effective merged configuration."
+  },
+  {
+    "name": "config_get",
+    "kind": "function",
+    "file": "src/pytk/cli.py",
+    "line_start": 622,
+    "line_end": 633,
+    "signature": "config_get(key)",
+    "docstring": "Get a config value by dotted key (e.g. filters.cat.max_lines)."
+  },
+  {
+    "name": "config_set",
+    "kind": "function",
+    "file": "src/pytk/cli.py",
+    "line_start": 639,
+    "line_end": 667,
+    "signature": "config_set(key, value)",
+    "docstring": "Set a config value in .pytk.toml (project config)."
+  },
+  {
+    "name": "doctor_cmd",
+    "kind": "function",
+    "file": "src/pytk/cli.py",
+    "line_start": 671,
+    "line_end": 676,
+    "signature": "doctor_cmd()",
+    "docstring": "Check pytk environment and print a health report."
+  },
+  {
+    "name": "list_filters",
+    "kind": "function",
+    "file": "src/pytk/cli.py",
+    "line_start": 680,
+    "line_end": 702,
+    "signature": "list_filters()",
+    "docstring": "Show all registered filters and example savings."
+  },
+  {
+    "name": "hook",
+    "kind": "function",
+    "file": "src/pytk/cli.py",
+    "line_start": 706,
+    "line_end": 708,
+    "signature": "hook()",
+    "docstring": "Manage shell hook for automatic command interception."
+  },
+  {
+    "name": "hook_enable",
+    "kind": "function",
+    "file": "src/pytk/cli.py",
+    "line_start": 713,
+    "line_end": 721,
+    "signature": "hook_enable(shell)",
+    "docstring": "Enable pytk shell hook — auto-intercepts commands without pytk prefix."
+  },
+  {
+    "name": "hook_disable",
+    "kind": "function",
+    "file": "src/pytk/cli.py",
+    "line_start": 726,
+    "line_end": 734,
+    "signature": "hook_disable(shell)",
+    "docstring": "Disable pytk shell hook."
+  },
+  {
+    "name": "hook_status_cmd",
+    "kind": "function",
+    "file": "src/pytk/cli.py",
+    "line_start": 739,
+    "line_end": 746,
+    "signature": "hook_status_cmd(shell)",
+    "docstring": "Show whether pytk hook is active."
+  },
+  {
+    "name": "hook_run_claude",
+    "kind": "function",
+    "file": "src/pytk/cli.py",
+    "line_start": 750,
+    "line_end": 753,
+    "signature": "hook_run_claude()",
+    "docstring": "Used internally by Claude Code PreToolUse hook."
+  },
+  {
+    "name": "pytk.config",
+    "kind": "module",
+    "file": "src/pytk/config.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "_find_project_config",
+    "kind": "function",
+    "file": "src/pytk/config.py",
+    "line_start": 28,
+    "line_end": 35,
+    "signature": "_find_project_config(start)",
+    "docstring": "Walk up from start dir looking for .pytk.toml"
+  },
+  {
+    "name": "_deep_merge",
+    "kind": "function",
+    "file": "src/pytk/config.py",
+    "line_start": 37,
+    "line_end": 45,
+    "signature": "_deep_merge(base, override)",
+    "docstring": "Recursively merge override into base (override wins)"
+  },
+  {
+    "name": "load_config",
+    "kind": "function",
+    "file": "src/pytk/config.py",
+    "line_start": 47,
+    "line_end": 64,
+    "signature": "load_config(cwd)",
+    "docstring": null
+  },
+  {
+    "name": "get_filter_config",
+    "kind": "function",
+    "file": "src/pytk/config.py",
+    "line_start": 66,
+    "line_end": 68,
+    "signature": "get_filter_config(config, filter_name)",
+    "docstring": "Get config for a specific filter, falling back to empty dict"
+  },
+  {
+    "name": "pytk.doctor",
+    "kind": "module",
+    "file": "src/pytk/doctor.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "_ok",
+    "kind": "function",
+    "file": "src/pytk/doctor.py",
+    "line_start": 16,
+    "line_end": 17,
+    "signature": "_ok(msg)",
+    "docstring": null
+  },
+  {
+    "name": "_fail",
+    "kind": "function",
+    "file": "src/pytk/doctor.py",
+    "line_start": 20,
+    "line_end": 21,
+    "signature": "_fail(msg)",
+    "docstring": null
+  },
+  {
+    "name": "_warn",
+    "kind": "function",
+    "file": "src/pytk/doctor.py",
+    "line_start": 24,
+    "line_end": 25,
+    "signature": "_warn(msg)",
+    "docstring": null
+  },
+  {
+    "name": "run_doctor",
+    "kind": "function",
+    "file": "src/pytk/doctor.py",
+    "line_start": 28,
+    "line_end": 112,
+    "signature": "run_doctor(cwd)",
+    "docstring": "Run all doctor checks. Returns exit code (0 = ok, 1 = critical failure)."
+  },
+  {
+    "name": "pytk.filters.__init__",
+    "kind": "module",
+    "file": "src/pytk/filters/__init__.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "pytk.filters.base",
+    "kind": "module",
+    "file": "src/pytk/filters/base.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "strip_ansi",
+    "kind": "function",
+    "file": "src/pytk/filters/base.py",
+    "line_start": 8,
+    "line_end": 10,
+    "signature": "strip_ansi(text)",
+    "docstring": "Remove ANSI escape sequences from text."
+  },
+  {
+    "name": "cmd_name",
+    "kind": "function",
+    "file": "src/pytk/filters/base.py",
+    "line_start": 13,
+    "line_end": 21,
+    "signature": "cmd_name(cmd)",
+    "docstring": "Return the basename of cmd[0], stripping full paths.\n\nHandles cases like '/usr/bin/python3' -> 'python3',\n'/home/user/.venv/bin/pytest' -> 'pytest', 'python' -> 'python'."
+  },
+  {
+    "name": "BaseFilter",
+    "kind": "class",
+    "file": "src/pytk/filters/base.py",
+    "line_start": 24,
+    "line_end": 35,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "BaseFilter.matches",
+    "kind": "function",
+    "file": "src/pytk/filters/base.py",
+    "line_start": 26,
+    "line_end": 27,
+    "signature": "matches(self, cmd)",
+    "docstring": "Return True if this filter handles the command."
+  },
+  {
+    "name": "BaseFilter.filter",
+    "kind": "function",
+    "file": "src/pytk/filters/base.py",
+    "line_start": 30,
+    "line_end": 31,
+    "signature": "filter(self, output, cmd)",
+    "docstring": "Filter/compress the command output."
+  },
+  {
+    "name": "BaseFilter.savings_example",
+    "kind": "function",
+    "file": "src/pytk/filters/base.py",
+    "line_start": 33,
+    "line_end": 35,
+    "signature": "savings_example(self)",
+    "docstring": "Return {'before': N, 'after': N, 'description': str} for pytk list-filters."
+  },
+  {
+    "name": "pytk.filters.cargo",
+    "kind": "module",
+    "file": "src/pytk/filters/cargo.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "CargoFilter",
+    "kind": "class",
+    "file": "src/pytk/filters/cargo.py",
+    "line_start": 5,
+    "line_end": 145,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "CargoFilter.matches",
+    "kind": "function",
+    "file": "src/pytk/filters/cargo.py",
+    "line_start": 6,
+    "line_end": 8,
+    "signature": "matches(self, cmd)",
+    "docstring": null
+  },
+  {
+    "name": "CargoFilter.filter",
+    "kind": "function",
+    "file": "src/pytk/filters/cargo.py",
+    "line_start": 10,
+    "line_end": 23,
+    "signature": "filter(self, output, cmd)",
+    "docstring": null
+  },
+  {
+    "name": "CargoFilter._filter_build",
+    "kind": "function",
+    "file": "src/pytk/filters/cargo.py",
+    "line_start": 25,
+    "line_end": 77,
+    "signature": "_filter_build(self, output, cfg)",
+    "docstring": null
+  },
+  {
+    "name": "CargoFilter._filter_test",
+    "kind": "function",
+    "file": "src/pytk/filters/cargo.py",
+    "line_start": 79,
+    "line_end": 86,
+    "signature": "_filter_test(self, output)",
+    "docstring": null
+  },
+  {
+    "name": "CargoFilter._filter_clippy",
+    "kind": "function",
+    "file": "src/pytk/filters/cargo.py",
+    "line_start": 88,
+    "line_end": 97,
+    "signature": "_filter_clippy(self, output)",
+    "docstring": null
+  },
+  {
+    "name": "CargoFilter._filter_add_update",
+    "kind": "function",
+    "file": "src/pytk/filters/cargo.py",
+    "line_start": 99,
+    "line_end": 129,
+    "signature": "_filter_add_update(self, output)",
+    "docstring": null
+  },
+  {
+    "name": "CargoFilter._filter_run",
+    "kind": "function",
+    "file": "src/pytk/filters/cargo.py",
+    "line_start": 131,
+    "line_end": 138,
+    "signature": "_filter_run(self, output)",
+    "docstring": null
+  },
+  {
+    "name": "CargoFilter.savings_example",
+    "kind": "function",
+    "file": "src/pytk/filters/cargo.py",
+    "line_start": 140,
+    "line_end": 145,
+    "signature": "savings_example(self)",
+    "docstring": null
+  },
+  {
+    "name": "pytk.filters.cat",
+    "kind": "module",
+    "file": "src/pytk/filters/cat.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "CatFilter",
+    "kind": "class",
+    "file": "src/pytk/filters/cat.py",
+    "line_start": 9,
+    "line_end": 49,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "CatFilter.matches",
+    "kind": "function",
+    "file": "src/pytk/filters/cat.py",
+    "line_start": 10,
+    "line_end": 12,
+    "signature": "matches(self, cmd)",
+    "docstring": null
+  },
+  {
+    "name": "CatFilter.filter",
+    "kind": "function",
+    "file": "src/pytk/filters/cat.py",
+    "line_start": 14,
+    "line_end": 42,
+    "signature": "filter(self, output, cmd)",
+    "docstring": null
+  },
+  {
+    "name": "CatFilter.savings_example",
+    "kind": "function",
+    "file": "src/pytk/filters/cat.py",
+    "line_start": 44,
+    "line_end": 49,
+    "signature": "savings_example(self)",
+    "docstring": null
+  },
+  {
+    "name": "pytk.filters.curl",
+    "kind": "module",
+    "file": "src/pytk/filters/curl.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "CurlFilter",
+    "kind": "class",
+    "file": "src/pytk/filters/curl.py",
+    "line_start": 6,
+    "line_end": 142,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "CurlFilter.matches",
+    "kind": "function",
+    "file": "src/pytk/filters/curl.py",
+    "line_start": 7,
+    "line_end": 9,
+    "signature": "matches(self, cmd)",
+    "docstring": null
+  },
+  {
+    "name": "CurlFilter.filter",
+    "kind": "function",
+    "file": "src/pytk/filters/curl.py",
+    "line_start": 11,
+    "line_end": 19,
+    "signature": "filter(self, output, cmd)",
+    "docstring": null
+  },
+  {
+    "name": "CurlFilter._filter_curl",
+    "kind": "function",
+    "file": "src/pytk/filters/curl.py",
+    "line_start": 21,
+    "line_end": 79,
+    "signature": "_filter_curl(self, output, cmd)",
+    "docstring": null
+  },
+  {
+    "name": "CurlFilter._maybe_truncate_json",
+    "kind": "function",
+    "file": "src/pytk/filters/curl.py",
+    "line_start": 81,
+    "line_end": 98,
+    "signature": "_maybe_truncate_json(self, body, error)",
+    "docstring": null
+  },
+  {
+    "name": "CurlFilter._filter_httpie",
+    "kind": "function",
+    "file": "src/pytk/filters/curl.py",
+    "line_start": 100,
+    "line_end": 120,
+    "signature": "_filter_httpie(self, output)",
+    "docstring": null
+  },
+  {
+    "name": "CurlFilter._filter_wget",
+    "kind": "function",
+    "file": "src/pytk/filters/curl.py",
+    "line_start": 122,
+    "line_end": 135,
+    "signature": "_filter_wget(self, output)",
+    "docstring": null
+  },
+  {
+    "name": "CurlFilter.savings_example",
+    "kind": "function",
+    "file": "src/pytk/filters/curl.py",
+    "line_start": 137,
+    "line_end": 142,
+    "signature": "savings_example(self)",
+    "docstring": null
+  },
+  {
+    "name": "pytk.filters.docker",
+    "kind": "module",
+    "file": "src/pytk/filters/docker.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "DockerFilter",
+    "kind": "class",
+    "file": "src/pytk/filters/docker.py",
+    "line_start": 6,
+    "line_end": 207,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "DockerFilter.matches",
+    "kind": "function",
+    "file": "src/pytk/filters/docker.py",
+    "line_start": 7,
+    "line_end": 9,
+    "signature": "matches(self, cmd)",
+    "docstring": null
+  },
+  {
+    "name": "DockerFilter.filter",
+    "kind": "function",
+    "file": "src/pytk/filters/docker.py",
+    "line_start": 11,
+    "line_end": 37,
+    "signature": "filter(self, output, cmd)",
+    "docstring": null
+  },
+  {
+    "name": "DockerFilter._filter_ps",
+    "kind": "function",
+    "file": "src/pytk/filters/docker.py",
+    "line_start": 39,
+    "line_end": 60,
+    "signature": "_filter_ps(self, output)",
+    "docstring": "Keep NAME | IMAGE | STATUS, strip CONTAINER ID/COMMAND/CREATED/PORTS columns."
+  },
+  {
+    "name": "DockerFilter._filter_images",
+    "kind": "function",
+    "file": "src/pytk/filters/docker.py",
+    "line_start": 62,
+    "line_end": 79,
+    "signature": "_filter_images(self, output)",
+    "docstring": "Keep REPOSITORY:TAG only."
+  },
+  {
+    "name": "DockerFilter._filter_logs",
+    "kind": "function",
+    "file": "src/pytk/filters/docker.py",
+    "line_start": 81,
+    "line_end": 104,
+    "signature": "_filter_logs(self, output, tail)",
+    "docstring": "Strip ANSI, truncate to last N lines, deduplicate repeated lines."
+  },
+  {
+    "name": "DockerFilter._filter_build",
+    "kind": "function",
+    "file": "src/pytk/filters/docker.py",
+    "line_start": 106,
+    "line_end": 141,
+    "signature": "_filter_build(self, output)",
+    "docstring": "Strip step/cache lines, keep errors and final image ID."
+  },
+  {
+    "name": "DockerFilter._filter_compose_action",
+    "kind": "function",
+    "file": "src/pytk/filters/docker.py",
+    "line_start": 143,
+    "line_end": 170,
+    "signature": "_filter_compose_action(self, output, subcmd)",
+    "docstring": "Compress compose up/down to service name + status."
+  },
+  {
+    "name": "DockerFilter._filter_inspect",
+    "kind": "function",
+    "file": "src/pytk/filters/docker.py",
+    "line_start": 172,
+    "line_end": 200,
+    "signature": "_filter_inspect(self, output)",
+    "docstring": null
+  },
+  {
+    "name": "DockerFilter.savings_example",
+    "kind": "function",
+    "file": "src/pytk/filters/docker.py",
+    "line_start": 202,
+    "line_end": 207,
+    "signature": "savings_example(self)",
+    "docstring": null
+  },
+  {
+    "name": "pytk.filters.git",
+    "kind": "module",
+    "file": "src/pytk/filters/git.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "GitFilter",
+    "kind": "class",
+    "file": "src/pytk/filters/git.py",
+    "line_start": 5,
+    "line_end": 124,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "GitFilter.matches",
+    "kind": "function",
+    "file": "src/pytk/filters/git.py",
+    "line_start": 6,
+    "line_end": 8,
+    "signature": "matches(self, cmd)",
+    "docstring": null
+  },
+  {
+    "name": "GitFilter.filter",
+    "kind": "function",
+    "file": "src/pytk/filters/git.py",
+    "line_start": 10,
+    "line_end": 21,
+    "signature": "filter(self, output, cmd)",
+    "docstring": null
+  },
+  {
+    "name": "GitFilter._filter_status",
+    "kind": "function",
+    "file": "src/pytk/filters/git.py",
+    "line_start": 23,
+    "line_end": 44,
+    "signature": "_filter_status(self, output)",
+    "docstring": null
+  },
+  {
+    "name": "GitFilter._filter_diff",
+    "kind": "function",
+    "file": "src/pytk/filters/git.py",
+    "line_start": 46,
+    "line_end": 57,
+    "signature": "_filter_diff(self, output)",
+    "docstring": null
+  },
+  {
+    "name": "GitFilter._compress_msg",
+    "kind": "function",
+    "file": "src/pytk/filters/git.py",
+    "line_start": 62,
+    "line_end": 68,
+    "signature": "_compress_msg(self, msg)",
+    "docstring": "Strip ref decorations and truncate long commit messages."
+  },
+  {
+    "name": "GitFilter._filter_log",
+    "kind": "function",
+    "file": "src/pytk/filters/git.py",
+    "line_start": 70,
+    "line_end": 97,
+    "signature": "_filter_log(self, output)",
+    "docstring": null
+  },
+  {
+    "name": "GitFilter._filter_action",
+    "kind": "function",
+    "file": "src/pytk/filters/git.py",
+    "line_start": 99,
+    "line_end": 117,
+    "signature": "_filter_action(self, output, subcmd)",
+    "docstring": null
+  },
+  {
+    "name": "GitFilter.savings_example",
+    "kind": "function",
+    "file": "src/pytk/filters/git.py",
+    "line_start": 119,
+    "line_end": 124,
+    "signature": "savings_example(self)",
+    "docstring": null
+  },
+  {
+    "name": "pytk.filters.grep",
+    "kind": "module",
+    "file": "src/pytk/filters/grep.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "GrepFilter",
+    "kind": "class",
+    "file": "src/pytk/filters/grep.py",
+    "line_start": 10,
+    "line_end": 74,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "GrepFilter.matches",
+    "kind": "function",
+    "file": "src/pytk/filters/grep.py",
+    "line_start": 11,
+    "line_end": 13,
+    "signature": "matches(self, cmd)",
+    "docstring": null
+  },
+  {
+    "name": "GrepFilter.filter",
+    "kind": "function",
+    "file": "src/pytk/filters/grep.py",
+    "line_start": 15,
+    "line_end": 67,
+    "signature": "filter(self, output, cmd)",
+    "docstring": null
+  },
+  {
+    "name": "GrepFilter.savings_example",
+    "kind": "function",
+    "file": "src/pytk/filters/grep.py",
+    "line_start": 69,
+    "line_end": 74,
+    "signature": "savings_example(self)",
+    "docstring": null
+  },
+  {
+    "name": "pytk.filters.kubectl",
+    "kind": "module",
+    "file": "src/pytk/filters/kubectl.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "KubectlFilter",
+    "kind": "class",
+    "file": "src/pytk/filters/kubectl.py",
+    "line_start": 6,
+    "line_end": 235,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "KubectlFilter.matches",
+    "kind": "function",
+    "file": "src/pytk/filters/kubectl.py",
+    "line_start": 7,
+    "line_end": 9,
+    "signature": "matches(self, cmd)",
+    "docstring": null
+  },
+  {
+    "name": "KubectlFilter.filter",
+    "kind": "function",
+    "file": "src/pytk/filters/kubectl.py",
+    "line_start": 11,
+    "line_end": 29,
+    "signature": "filter(self, output, cmd)",
+    "docstring": null
+  },
+  {
+    "name": "KubectlFilter._filter_get",
+    "kind": "function",
+    "file": "src/pytk/filters/kubectl.py",
+    "line_start": 31,
+    "line_end": 38,
+    "signature": "_filter_get(self, output, cmd)",
+    "docstring": null
+  },
+  {
+    "name": "KubectlFilter._filter_get_pods",
+    "kind": "function",
+    "file": "src/pytk/filters/kubectl.py",
+    "line_start": 40,
+    "line_end": 76,
+    "signature": "_filter_get_pods(self, output)",
+    "docstring": "Keep NAME STATUS RESTARTS AGE columns only."
+  },
+  {
+    "name": "KubectlFilter._filter_describe",
+    "kind": "function",
+    "file": "src/pytk/filters/kubectl.py",
+    "line_start": 78,
+    "line_end": 135,
+    "signature": "_filter_describe(self, output)",
+    "docstring": null
+  },
+  {
+    "name": "KubectlFilter._filter_logs",
+    "kind": "function",
+    "file": "src/pytk/filters/kubectl.py",
+    "line_start": 137,
+    "line_end": 181,
+    "signature": "_filter_logs(self, output)",
+    "docstring": null
+  },
+  {
+    "name": "KubectlFilter._filter_events",
+    "kind": "function",
+    "file": "src/pytk/filters/kubectl.py",
+    "line_start": 183,
+    "line_end": 217,
+    "signature": "_filter_events(self, output)",
+    "docstring": null
+  },
+  {
+    "name": "KubectlFilter._filter_action",
+    "kind": "function",
+    "file": "src/pytk/filters/kubectl.py",
+    "line_start": 219,
+    "line_end": 222,
+    "signature": "_filter_action(self, output)",
+    "docstring": null
+  },
+  {
+    "name": "KubectlFilter._filter_rollout",
+    "kind": "function",
+    "file": "src/pytk/filters/kubectl.py",
+    "line_start": 224,
+    "line_end": 228,
+    "signature": "_filter_rollout(self, output)",
+    "docstring": null
+  },
+  {
+    "name": "KubectlFilter.savings_example",
+    "kind": "function",
+    "file": "src/pytk/filters/kubectl.py",
+    "line_start": 230,
+    "line_end": 235,
+    "signature": "savings_example(self)",
+    "docstring": null
+  },
+  {
+    "name": "pytk.filters.lint",
+    "kind": "module",
+    "file": "src/pytk/filters/lint.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "LintFilter",
+    "kind": "class",
+    "file": "src/pytk/filters/lint.py",
+    "line_start": 5,
+    "line_end": 95,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "LintFilter.matches",
+    "kind": "function",
+    "file": "src/pytk/filters/lint.py",
+    "line_start": 6,
+    "line_end": 8,
+    "signature": "matches(self, cmd)",
+    "docstring": null
+  },
+  {
+    "name": "LintFilter.filter",
+    "kind": "function",
+    "file": "src/pytk/filters/lint.py",
+    "line_start": 10,
+    "line_end": 23,
+    "signature": "filter(self, output, cmd)",
+    "docstring": null
+  },
+  {
+    "name": "LintFilter._filter_ruff",
+    "kind": "function",
+    "file": "src/pytk/filters/lint.py",
+    "line_start": 25,
+    "line_end": 38,
+    "signature": "_filter_ruff(self, output)",
+    "docstring": null
+  },
+  {
+    "name": "LintFilter._filter_mypy",
+    "kind": "function",
+    "file": "src/pytk/filters/lint.py",
+    "line_start": 40,
+    "line_end": 52,
+    "signature": "_filter_mypy(self, output)",
+    "docstring": null
+  },
+  {
+    "name": "LintFilter._filter_flake8",
+    "kind": "function",
+    "file": "src/pytk/filters/lint.py",
+    "line_start": 54,
+    "line_end": 59,
+    "signature": "_filter_flake8(self, output)",
+    "docstring": null
+  },
+  {
+    "name": "LintFilter._filter_pylint",
+    "kind": "function",
+    "file": "src/pytk/filters/lint.py",
+    "line_start": 61,
+    "line_end": 75,
+    "signature": "_filter_pylint(self, output)",
+    "docstring": null
+  },
+  {
+    "name": "LintFilter._filter_tsc",
+    "kind": "function",
+    "file": "src/pytk/filters/lint.py",
+    "line_start": 77,
+    "line_end": 88,
+    "signature": "_filter_tsc(self, output)",
+    "docstring": null
+  },
+  {
+    "name": "LintFilter.savings_example",
+    "kind": "function",
+    "file": "src/pytk/filters/lint.py",
+    "line_start": 90,
+    "line_end": 95,
+    "signature": "savings_example(self)",
+    "docstring": null
+  },
+  {
+    "name": "pytk.filters.ls",
+    "kind": "module",
+    "file": "src/pytk/filters/ls.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "LsFilter",
+    "kind": "class",
+    "file": "src/pytk/filters/ls.py",
+    "line_start": 7,
+    "line_end": 62,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "LsFilter.matches",
+    "kind": "function",
+    "file": "src/pytk/filters/ls.py",
+    "line_start": 8,
+    "line_end": 10,
+    "signature": "matches(self, cmd)",
+    "docstring": null
+  },
+  {
+    "name": "LsFilter.filter",
+    "kind": "function",
+    "file": "src/pytk/filters/ls.py",
+    "line_start": 12,
+    "line_end": 23,
+    "signature": "filter(self, output, cmd)",
+    "docstring": null
+  },
+  {
+    "name": "LsFilter._filter_ls",
+    "kind": "function",
+    "file": "src/pytk/filters/ls.py",
+    "line_start": 25,
+    "line_end": 43,
+    "signature": "_filter_ls(self, lines)",
+    "docstring": null
+  },
+  {
+    "name": "LsFilter._filter_find",
+    "kind": "function",
+    "file": "src/pytk/filters/ls.py",
+    "line_start": 45,
+    "line_end": 47,
+    "signature": "_filter_find(self, lines)",
+    "docstring": null
+  },
+  {
+    "name": "LsFilter._truncate",
+    "kind": "function",
+    "file": "src/pytk/filters/ls.py",
+    "line_start": 49,
+    "line_end": 55,
+    "signature": "_truncate(self, lines)",
+    "docstring": null
+  },
+  {
+    "name": "LsFilter.savings_example",
+    "kind": "function",
+    "file": "src/pytk/filters/ls.py",
+    "line_start": 57,
+    "line_end": 62,
+    "signature": "savings_example(self)",
+    "docstring": null
+  },
+  {
+    "name": "pytk.filters.make",
+    "kind": "module",
+    "file": "src/pytk/filters/make.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "MakeFilter",
+    "kind": "class",
+    "file": "src/pytk/filters/make.py",
+    "line_start": 5,
+    "line_end": 29,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "MakeFilter.matches",
+    "kind": "function",
+    "file": "src/pytk/filters/make.py",
+    "line_start": 6,
+    "line_end": 8,
+    "signature": "matches(self, cmd)",
+    "docstring": null
+  },
+  {
+    "name": "MakeFilter.filter",
+    "kind": "function",
+    "file": "src/pytk/filters/make.py",
+    "line_start": 10,
+    "line_end": 22,
+    "signature": "filter(self, output, cmd)",
+    "docstring": null
+  },
+  {
+    "name": "MakeFilter.savings_example",
+    "kind": "function",
+    "file": "src/pytk/filters/make.py",
+    "line_start": 24,
+    "line_end": 29,
+    "signature": "savings_example(self)",
+    "docstring": null
+  },
+  {
+    "name": "pytk.filters.npm",
+    "kind": "module",
+    "file": "src/pytk/filters/npm.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "NpmFilter",
+    "kind": "class",
+    "file": "src/pytk/filters/npm.py",
+    "line_start": 5,
+    "line_end": 127,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "NpmFilter.matches",
+    "kind": "function",
+    "file": "src/pytk/filters/npm.py",
+    "line_start": 6,
+    "line_end": 8,
+    "signature": "matches(self, cmd)",
+    "docstring": null
+  },
+  {
+    "name": "NpmFilter.filter",
+    "kind": "function",
+    "file": "src/pytk/filters/npm.py",
+    "line_start": 10,
+    "line_end": 28,
+    "signature": "filter(self, output, cmd)",
+    "docstring": null
+  },
+  {
+    "name": "NpmFilter._filter_install",
+    "kind": "function",
+    "file": "src/pytk/filters/npm.py",
+    "line_start": 30,
+    "line_end": 51,
+    "signature": "_filter_install(self, output)",
+    "docstring": null
+  },
+  {
+    "name": "NpmFilter._filter_run",
+    "kind": "function",
+    "file": "src/pytk/filters/npm.py",
+    "line_start": 53,
+    "line_end": 74,
+    "signature": "_filter_run(self, output)",
+    "docstring": null
+  },
+  {
+    "name": "NpmFilter._filter_audit",
+    "kind": "function",
+    "file": "src/pytk/filters/npm.py",
+    "line_start": 76,
+    "line_end": 90,
+    "signature": "_filter_audit(self, output)",
+    "docstring": null
+  },
+  {
+    "name": "NpmFilter._filter_test",
+    "kind": "function",
+    "file": "src/pytk/filters/npm.py",
+    "line_start": 92,
+    "line_end": 100,
+    "signature": "_filter_test(self, output)",
+    "docstring": null
+  },
+  {
+    "name": "NpmFilter._filter_npx",
+    "kind": "function",
+    "file": "src/pytk/filters/npm.py",
+    "line_start": 102,
+    "line_end": 120,
+    "signature": "_filter_npx(self, output)",
+    "docstring": null
+  },
+  {
+    "name": "NpmFilter.savings_example",
+    "kind": "function",
+    "file": "src/pytk/filters/npm.py",
+    "line_start": 122,
+    "line_end": 127,
+    "signature": "savings_example(self)",
+    "docstring": null
+  },
+  {
+    "name": "pytk.filters.package_manager",
+    "kind": "module",
+    "file": "src/pytk/filters/package_manager.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "PackageManagerFilter",
+    "kind": "class",
+    "file": "src/pytk/filters/package_manager.py",
+    "line_start": 5,
+    "line_end": 45,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "PackageManagerFilter.matches",
+    "kind": "function",
+    "file": "src/pytk/filters/package_manager.py",
+    "line_start": 6,
+    "line_end": 10,
+    "signature": "matches(self, cmd)",
+    "docstring": null
+  },
+  {
+    "name": "PackageManagerFilter.filter",
+    "kind": "function",
+    "file": "src/pytk/filters/package_manager.py",
+    "line_start": 12,
+    "line_end": 38,
+    "signature": "filter(self, output, cmd)",
+    "docstring": null
+  },
+  {
+    "name": "PackageManagerFilter.savings_example",
+    "kind": "function",
+    "file": "src/pytk/filters/package_manager.py",
+    "line_start": 40,
+    "line_end": 45,
+    "signature": "savings_example(self)",
+    "docstring": null
+  },
+  {
+    "name": "pytk.filters.poetry",
+    "kind": "module",
+    "file": "src/pytk/filters/poetry.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "PoetryFilter",
+    "kind": "class",
+    "file": "src/pytk/filters/poetry.py",
+    "line_start": 5,
+    "line_end": 35,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "PoetryFilter.matches",
+    "kind": "function",
+    "file": "src/pytk/filters/poetry.py",
+    "line_start": 6,
+    "line_end": 8,
+    "signature": "matches(self, cmd)",
+    "docstring": null
+  },
+  {
+    "name": "PoetryFilter.filter",
+    "kind": "function",
+    "file": "src/pytk/filters/poetry.py",
+    "line_start": 10,
+    "line_end": 21,
+    "signature": "filter(self, output, cmd)",
+    "docstring": null
+  },
+  {
+    "name": "PoetryFilter._filter_install",
+    "kind": "function",
+    "file": "src/pytk/filters/poetry.py",
+    "line_start": 23,
+    "line_end": 32,
+    "signature": "_filter_install(self, output)",
+    "docstring": null
+  },
+  {
+    "name": "PoetryFilter.savings_example",
+    "kind": "function",
+    "file": "src/pytk/filters/poetry.py",
+    "line_start": 34,
+    "line_end": 35,
+    "signature": "savings_example(self)",
+    "docstring": null
+  },
+  {
+    "name": "pytk.filters.registry",
+    "kind": "module",
+    "file": "src/pytk/filters/registry.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "get_filter",
+    "kind": "function",
+    "file": "src/pytk/filters/registry.py",
+    "line_start": 22,
+    "line_end": 26,
+    "signature": "get_filter(cmd)",
+    "docstring": null
+  },
+  {
+    "name": "pytk.filters.terraform",
+    "kind": "module",
+    "file": "src/pytk/filters/terraform.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "TerraformFilter",
+    "kind": "class",
+    "file": "src/pytk/filters/terraform.py",
+    "line_start": 5,
+    "line_end": 37,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "TerraformFilter.matches",
+    "kind": "function",
+    "file": "src/pytk/filters/terraform.py",
+    "line_start": 6,
+    "line_end": 10,
+    "signature": "matches(self, cmd)",
+    "docstring": null
+  },
+  {
+    "name": "TerraformFilter.filter",
+    "kind": "function",
+    "file": "src/pytk/filters/terraform.py",
+    "line_start": 12,
+    "line_end": 30,
+    "signature": "filter(self, output, cmd)",
+    "docstring": null
+  },
+  {
+    "name": "TerraformFilter.savings_example",
+    "kind": "function",
+    "file": "src/pytk/filters/terraform.py",
+    "line_start": 32,
+    "line_end": 37,
+    "signature": "savings_example(self)",
+    "docstring": null
+  },
+  {
+    "name": "pytk.filters.test",
+    "kind": "module",
+    "file": "src/pytk/filters/test.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "TestFilter",
+    "kind": "class",
+    "file": "src/pytk/filters/test.py",
+    "line_start": 7,
+    "line_end": 118,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "TestFilter.matches",
+    "kind": "function",
+    "file": "src/pytk/filters/test.py",
+    "line_start": 8,
+    "line_end": 24,
+    "signature": "matches(self, cmd)",
+    "docstring": null
+  },
+  {
+    "name": "TestFilter.filter",
+    "kind": "function",
+    "file": "src/pytk/filters/test.py",
+    "line_start": 26,
+    "line_end": 111,
+    "signature": "filter(self, output, cmd)",
+    "docstring": null
+  },
+  {
+    "name": "TestFilter.savings_example",
+    "kind": "function",
+    "file": "src/pytk/filters/test.py",
+    "line_start": 113,
+    "line_end": 118,
+    "signature": "savings_example(self)",
+    "docstring": null
+  },
+  {
+    "name": "pytk.filters.uv",
+    "kind": "module",
+    "file": "src/pytk/filters/uv.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "UvFilter",
+    "kind": "class",
+    "file": "src/pytk/filters/uv.py",
+    "line_start": 5,
+    "line_end": 52,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "UvFilter.matches",
+    "kind": "function",
+    "file": "src/pytk/filters/uv.py",
+    "line_start": 6,
+    "line_end": 7,
+    "signature": "matches(self, cmd)",
+    "docstring": null
+  },
+  {
+    "name": "UvFilter.filter",
+    "kind": "function",
+    "file": "src/pytk/filters/uv.py",
+    "line_start": 9,
+    "line_end": 45,
+    "signature": "filter(self, output, cmd)",
+    "docstring": null
+  },
+  {
+    "name": "UvFilter.savings_example",
+    "kind": "function",
+    "file": "src/pytk/filters/uv.py",
+    "line_start": 47,
+    "line_end": 52,
+    "signature": "savings_example(self)",
+    "docstring": null
+  },
+  {
+    "name": "pytk.hook",
+    "kind": "module",
+    "file": "src/pytk/hook.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "_detect_shell",
+    "kind": "function",
+    "file": "src/pytk/hook.py",
+    "line_start": 43,
+    "line_end": 49,
+    "signature": "_detect_shell()",
+    "docstring": null
+  },
+  {
+    "name": "_get_config_file",
+    "kind": "function",
+    "file": "src/pytk/hook.py",
+    "line_start": 52,
+    "line_end": 58,
+    "signature": "_get_config_file(shell)",
+    "docstring": null
+  },
+  {
+    "name": "_build_bash_snippet",
+    "kind": "function",
+    "file": "src/pytk/hook.py",
+    "line_start": 61,
+    "line_end": 69,
+    "signature": "_build_bash_snippet()",
+    "docstring": null
+  },
+  {
+    "name": "_build_fish_snippet",
+    "kind": "function",
+    "file": "src/pytk/hook.py",
+    "line_start": 72,
+    "line_end": 80,
+    "signature": "_build_fish_snippet()",
+    "docstring": null
+  },
+  {
+    "name": "_is_enabled",
+    "kind": "function",
+    "file": "src/pytk/hook.py",
+    "line_start": 83,
+    "line_end": 87,
+    "signature": "_is_enabled(cfg_file)",
+    "docstring": null
+  },
+  {
+    "name": "enable_hook",
+    "kind": "function",
+    "file": "src/pytk/hook.py",
+    "line_start": 90,
+    "line_end": 106,
+    "signature": "enable_hook(shell, cfg_file)",
+    "docstring": "Returns (already_was_enabled, config_file_path)"
+  },
+  {
+    "name": "disable_hook",
+    "kind": "function",
+    "file": "src/pytk/hook.py",
+    "line_start": 109,
+    "line_end": 125,
+    "signature": "disable_hook(shell, cfg_file)",
+    "docstring": "Returns (was_enabled, config_file_path)"
+  },
+  {
+    "name": "hook_status",
+    "kind": "function",
+    "file": "src/pytk/hook.py",
+    "line_start": 128,
+    "line_end": 136,
+    "signature": "hook_status(shell, cfg_file)",
+    "docstring": null
+  },
+  {
+    "name": "pytk.hooks.__init__",
+    "kind": "module",
+    "file": "src/pytk/hooks/__init__.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "pytk.hooks.claude_hook",
+    "kind": "module",
+    "file": "src/pytk/hooks/claude_hook.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "should_rewrite",
+    "kind": "function",
+    "file": "src/pytk/hooks/claude_hook.py",
+    "line_start": 25,
+    "line_end": 35,
+    "signature": "should_rewrite(command)",
+    "docstring": "Check if command should be prefixed with pytk."
+  },
+  {
+    "name": "rewrite_command",
+    "kind": "function",
+    "file": "src/pytk/hooks/claude_hook.py",
+    "line_start": 38,
+    "line_end": 40,
+    "signature": "rewrite_command(command)",
+    "docstring": "Prefix command with pytk."
+  },
+  {
+    "name": "main",
+    "kind": "function",
+    "file": "src/pytk/hooks/claude_hook.py",
+    "line_start": 43,
+    "line_end": 65,
+    "signature": "main()",
+    "docstring": null
+  },
+  {
+    "name": "pytk.runner",
+    "kind": "module",
+    "file": "src/pytk/runner.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "run",
+    "kind": "function",
+    "file": "src/pytk/runner.py",
+    "line_start": 15,
+    "line_end": 28,
+    "signature": "run(cmd, capture_env)",
+    "docstring": "Execute cmd as subprocess, return (output, exit_code)."
+  },
+  {
+    "name": "run_filtered",
+    "kind": "function",
+    "file": "src/pytk/runner.py",
+    "line_start": 31,
+    "line_end": 90,
+    "signature": "run_filtered(cmd, no_cache, dry_run)",
+    "docstring": "Run cmd, apply filter, return (filtered_output, exit_code, stats)."
+  },
+  {
+    "name": "_append_stats",
+    "kind": "function",
+    "file": "src/pytk/runner.py",
+    "line_start": 93,
+    "line_end": 104,
+    "signature": "_append_stats(cmd, stats)",
+    "docstring": null
+  },
+  {
+    "name": "tests.test_ansi_stripping",
+    "kind": "module",
+    "file": "tests/test_ansi_stripping.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "test_git_status_strips_ansi",
+    "kind": "function",
+    "file": "tests/test_ansi_stripping.py",
+    "line_start": 6,
+    "line_end": 11,
+    "signature": "test_git_status_strips_ansi()",
+    "docstring": null
+  },
+  {
+    "name": "test_pytest_strips_ansi",
+    "kind": "function",
+    "file": "tests/test_ansi_stripping.py",
+    "line_start": 14,
+    "line_end": 19,
+    "signature": "test_pytest_strips_ansi()",
+    "docstring": null
+  },
+  {
+    "name": "test_grep_strips_ansi",
+    "kind": "function",
+    "file": "tests/test_ansi_stripping.py",
+    "line_start": 22,
+    "line_end": 26,
+    "signature": "test_grep_strips_ansi()",
+    "docstring": null
+  },
+  {
+    "name": "test_strip_ansi_util",
+    "kind": "function",
+    "file": "tests/test_ansi_stripping.py",
+    "line_start": 29,
+    "line_end": 34,
+    "signature": "test_strip_ansi_util()",
+    "docstring": null
+  },
+  {
+    "name": "tests.test_cache",
+    "kind": "module",
+    "file": "tests/test_cache.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "clear_cache",
+    "kind": "function",
+    "file": "tests/test_cache.py",
+    "line_start": 10,
+    "line_end": 14,
+    "signature": "clear_cache()",
+    "docstring": "Clear cache before each test."
+  },
+  {
+    "name": "test_is_cacheable_git",
+    "kind": "function",
+    "file": "tests/test_cache.py",
+    "line_start": 17,
+    "line_end": 18,
+    "signature": "test_is_cacheable_git()",
+    "docstring": null
+  },
+  {
+    "name": "test_is_cacheable_ls",
+    "kind": "function",
+    "file": "tests/test_cache.py",
+    "line_start": 21,
+    "line_end": 22,
+    "signature": "test_is_cacheable_ls()",
+    "docstring": null
+  },
+  {
+    "name": "test_not_cacheable_docker",
+    "kind": "function",
+    "file": "tests/test_cache.py",
+    "line_start": 25,
+    "line_end": 26,
+    "signature": "test_not_cacheable_docker()",
+    "docstring": null
+  },
+  {
+    "name": "test_not_cacheable_npm",
+    "kind": "function",
+    "file": "tests/test_cache.py",
+    "line_start": 29,
+    "line_end": 30,
+    "signature": "test_not_cacheable_npm()",
+    "docstring": null
+  },
+  {
+    "name": "test_cache_get_miss",
+    "kind": "function",
+    "file": "tests/test_cache.py",
+    "line_start": 33,
+    "line_end": 34,
+    "signature": "test_cache_get_miss()",
+    "docstring": null
+  },
+  {
+    "name": "test_cache_set_and_get",
+    "kind": "function",
+    "file": "tests/test_cache.py",
+    "line_start": 37,
+    "line_end": 40,
+    "signature": "test_cache_set_and_get()",
+    "docstring": null
+  },
+  {
+    "name": "test_cache_ttl_expiry",
+    "kind": "function",
+    "file": "tests/test_cache.py",
+    "line_start": 43,
+    "line_end": 47,
+    "signature": "test_cache_ttl_expiry()",
+    "docstring": null
+  },
+  {
+    "name": "test_cache_different_cwd",
+    "kind": "function",
+    "file": "tests/test_cache.py",
+    "line_start": 50,
+    "line_end": 54,
+    "signature": "test_cache_different_cwd()",
+    "docstring": null
+  },
+  {
+    "name": "test_cache_clear",
+    "kind": "function",
+    "file": "tests/test_cache.py",
+    "line_start": 57,
+    "line_end": 62,
+    "signature": "test_cache_clear()",
+    "docstring": null
+  },
+  {
+    "name": "test_no_cache_flag_bypasses",
+    "kind": "function",
+    "file": "tests/test_cache.py",
+    "line_start": 65,
+    "line_end": 85,
+    "signature": "test_no_cache_flag_bypasses(monkeypatch, tmp_path)",
+    "docstring": "With no_cache=True, cache should not be populated or used."
+  },
+  {
+    "name": "tests.test_cli",
+    "kind": "module",
+    "file": "tests/test_cli.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "test_cli_passthrough",
+    "kind": "function",
+    "file": "tests/test_cli.py",
+    "line_start": 5,
+    "line_end": 8,
+    "signature": "test_cli_passthrough()",
+    "docstring": null
+  },
+  {
+    "name": "test_cli_list_filters",
+    "kind": "function",
+    "file": "tests/test_cli.py",
+    "line_start": 11,
+    "line_end": 15,
+    "signature": "test_cli_list_filters()",
+    "docstring": null
+  },
+  {
+    "name": "test_cli_init_claude",
+    "kind": "function",
+    "file": "tests/test_cli.py",
+    "line_start": 18,
+    "line_end": 22,
+    "signature": "test_cli_init_claude()",
+    "docstring": null
+  },
+  {
+    "name": "test_cli_init_hermes",
+    "kind": "function",
+    "file": "tests/test_cli.py",
+    "line_start": 25,
+    "line_end": 29,
+    "signature": "test_cli_init_hermes()",
+    "docstring": null
+  },
+  {
+    "name": "test_cli_init_codex",
+    "kind": "function",
+    "file": "tests/test_cli.py",
+    "line_start": 32,
+    "line_end": 36,
+    "signature": "test_cli_init_codex()",
+    "docstring": null
+  },
+  {
+    "name": "test_cli_gain_no_stats",
+    "kind": "function",
+    "file": "tests/test_cli.py",
+    "line_start": 39,
+    "line_end": 44,
+    "signature": "test_cli_gain_no_stats(tmp_path, monkeypatch)",
+    "docstring": null
+  },
+  {
+    "name": "tests.test_config",
+    "kind": "module",
+    "file": "tests/test_config.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "test_defaults_returned_when_no_files",
+    "kind": "function",
+    "file": "tests/test_config.py",
+    "line_start": 7,
+    "line_end": 11,
+    "signature": "test_defaults_returned_when_no_files(tmp_path, monkeypatch)",
+    "docstring": null
+  },
+  {
+    "name": "test_deep_merge",
+    "kind": "function",
+    "file": "tests/test_config.py",
+    "line_start": 14,
+    "line_end": 18,
+    "signature": "test_deep_merge()",
+    "docstring": null
+  },
+  {
+    "name": "test_project_config_overrides_defaults",
+    "kind": "function",
+    "file": "tests/test_config.py",
+    "line_start": 21,
+    "line_end": 28,
+    "signature": "test_project_config_overrides_defaults(tmp_path, monkeypatch)",
+    "docstring": null
+  },
+  {
+    "name": "test_user_config_overrides_defaults",
+    "kind": "function",
+    "file": "tests/test_config.py",
+    "line_start": 31,
+    "line_end": 38,
+    "signature": "test_user_config_overrides_defaults(tmp_path, monkeypatch)",
+    "docstring": null
+  },
+  {
+    "name": "test_project_overrides_user",
+    "kind": "function",
+    "file": "tests/test_config.py",
+    "line_start": 41,
+    "line_end": 49,
+    "signature": "test_project_overrides_user(tmp_path, monkeypatch)",
+    "docstring": null
+  },
+  {
+    "name": "test_find_project_config_walks_parents",
+    "kind": "function",
+    "file": "tests/test_config.py",
+    "line_start": 52,
+    "line_end": 57,
+    "signature": "test_find_project_config_walks_parents(tmp_path, monkeypatch)",
+    "docstring": null
+  },
+  {
+    "name": "test_get_filter_config",
+    "kind": "function",
+    "file": "tests/test_config.py",
+    "line_start": 60,
+    "line_end": 65,
+    "signature": "test_get_filter_config(tmp_path, monkeypatch)",
+    "docstring": null
+  },
+  {
+    "name": "test_unknown_key_returns_empty",
+    "kind": "function",
+    "file": "tests/test_config.py",
+    "line_start": 68,
+    "line_end": 72,
+    "signature": "test_unknown_key_returns_empty(tmp_path, monkeypatch)",
+    "docstring": null
+  },
+  {
+    "name": "test_config_show",
+    "kind": "function",
+    "file": "tests/test_config.py",
+    "line_start": 80,
+    "line_end": 88,
+    "signature": "test_config_show(tmp_path, monkeypatch)",
+    "docstring": null
+  },
+  {
+    "name": "test_config_get",
+    "kind": "function",
+    "file": "tests/test_config.py",
+    "line_start": 91,
+    "line_end": 97,
+    "signature": "test_config_get(tmp_path, monkeypatch)",
+    "docstring": null
+  },
+  {
+    "name": "test_config_set_creates_file",
+    "kind": "function",
+    "file": "tests/test_config.py",
+    "line_start": 100,
+    "line_end": 110,
+    "signature": "test_config_set_creates_file(tmp_path, monkeypatch)",
+    "docstring": null
+  },
+  {
+    "name": "tests.test_doctor",
+    "kind": "module",
+    "file": "tests/test_doctor.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "invoke_doctor",
+    "kind": "function",
+    "file": "tests/test_doctor.py",
+    "line_start": 13,
+    "line_end": 21,
+    "signature": "invoke_doctor(cwd)",
+    "docstring": null
+  },
+  {
+    "name": "test_doctor_runs_without_error",
+    "kind": "function",
+    "file": "tests/test_doctor.py",
+    "line_start": 24,
+    "line_end": 29,
+    "signature": "test_doctor_runs_without_error()",
+    "docstring": null
+  },
+  {
+    "name": "test_doctor_shows_version",
+    "kind": "function",
+    "file": "tests/test_doctor.py",
+    "line_start": 32,
+    "line_end": 35,
+    "signature": "test_doctor_shows_version()",
+    "docstring": null
+  },
+  {
+    "name": "test_doctor_shows_filters",
+    "kind": "function",
+    "file": "tests/test_doctor.py",
+    "line_start": 38,
+    "line_end": 47,
+    "signature": "test_doctor_shows_filters()",
+    "docstring": null
+  },
+  {
+    "name": "test_doctor_claude_hook_found",
+    "kind": "function",
+    "file": "tests/test_doctor.py",
+    "line_start": 50,
+    "line_end": 69,
+    "signature": "test_doctor_claude_hook_found(tmp_path)",
+    "docstring": null
+  },
+  {
+    "name": "test_doctor_claude_hook_missing",
+    "kind": "function",
+    "file": "tests/test_doctor.py",
+    "line_start": 72,
+    "line_end": 84,
+    "signature": "test_doctor_claude_hook_missing(tmp_path)",
+    "docstring": null
+  },
+  {
+    "name": "tests.test_dry_run",
+    "kind": "module",
+    "file": "tests/test_dry_run.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "test_dry_run_prefixes_output",
+    "kind": "function",
+    "file": "tests/test_dry_run.py",
+    "line_start": 10,
+    "line_end": 15,
+    "signature": "test_dry_run_prefixes_output()",
+    "docstring": "--dry-run should prefix each output line with [DRY-RUN]."
+  },
+  {
+    "name": "test_dry_run_no_stats_update",
+    "kind": "function",
+    "file": "tests/test_dry_run.py",
+    "line_start": 18,
+    "line_end": 28,
+    "signature": "test_dry_run_no_stats_update(tmp_path)",
+    "docstring": "--dry-run must not write stats.json."
+  },
+  {
+    "name": "test_dry_run_still_filters",
+    "kind": "function",
+    "file": "tests/test_dry_run.py",
+    "line_start": 31,
+    "line_end": 36,
+    "signature": "test_dry_run_still_filters()",
+    "docstring": "Filter is applied; output should still have [DRY-RUN] prefix."
+  },
+  {
+    "name": "test_normal_run_no_prefix",
+    "kind": "function",
+    "file": "tests/test_dry_run.py",
+    "line_start": 39,
+    "line_end": 46,
+    "signature": "test_normal_run_no_prefix(tmp_path)",
+    "docstring": "Without --dry-run, output should NOT have [DRY-RUN] prefix."
+  },
+  {
+    "name": "tests.test_filters_cargo",
+    "kind": "module",
+    "file": "tests/test_filters_cargo.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "test_matches_cargo",
+    "kind": "function",
+    "file": "tests/test_filters_cargo.py",
+    "line_start": 7,
+    "line_end": 8,
+    "signature": "test_matches_cargo()",
+    "docstring": null
+  },
+  {
+    "name": "test_matches_rustc",
+    "kind": "function",
+    "file": "tests/test_filters_cargo.py",
+    "line_start": 10,
+    "line_end": 11,
+    "signature": "test_matches_rustc()",
+    "docstring": null
+  },
+  {
+    "name": "test_matches_rustfmt",
+    "kind": "function",
+    "file": "tests/test_filters_cargo.py",
+    "line_start": 13,
+    "line_end": 14,
+    "signature": "test_matches_rustfmt()",
+    "docstring": null
+  },
+  {
+    "name": "test_no_match",
+    "kind": "function",
+    "file": "tests/test_filters_cargo.py",
+    "line_start": 16,
+    "line_end": 18,
+    "signature": "test_no_match()",
+    "docstring": null
+  },
+  {
+    "name": "test_cargo_build_strips_compiling",
+    "kind": "function",
+    "file": "tests/test_filters_cargo.py",
+    "line_start": 21,
+    "line_end": 28,
+    "signature": "test_cargo_build_strips_compiling()",
+    "docstring": null
+  },
+  {
+    "name": "test_cargo_build_keeps_errors",
+    "kind": "function",
+    "file": "tests/test_filters_cargo.py",
+    "line_start": 31,
+    "line_end": 41,
+    "signature": "test_cargo_build_keeps_errors()",
+    "docstring": null
+  },
+  {
+    "name": "test_cargo_test_strips_passing",
+    "kind": "function",
+    "file": "tests/test_filters_cargo.py",
+    "line_start": 44,
+    "line_end": 53,
+    "signature": "test_cargo_test_strips_passing()",
+    "docstring": null
+  },
+  {
+    "name": "test_cargo_clippy_strips_checking",
+    "kind": "function",
+    "file": "tests/test_filters_cargo.py",
+    "line_start": 56,
+    "line_end": 69,
+    "signature": "test_cargo_clippy_strips_checking()",
+    "docstring": null
+  },
+  {
+    "name": "test_cargo_add_compressed",
+    "kind": "function",
+    "file": "tests/test_filters_cargo.py",
+    "line_start": 72,
+    "line_end": 77,
+    "signature": "test_cargo_add_compressed()",
+    "docstring": null
+  },
+  {
+    "name": "test_cargo_run_strips_build_lines",
+    "kind": "function",
+    "file": "tests/test_filters_cargo.py",
+    "line_start": 80,
+    "line_end": 87,
+    "signature": "test_cargo_run_strips_build_lines()",
+    "docstring": null
+  },
+  {
+    "name": "tests.test_filters_cat",
+    "kind": "module",
+    "file": "tests/test_filters_cat.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "make_lines",
+    "kind": "function",
+    "file": "tests/test_filters_cat.py",
+    "line_start": 6,
+    "line_end": 7,
+    "signature": "make_lines(n)",
+    "docstring": null
+  },
+  {
+    "name": "test_cat_matches",
+    "kind": "function",
+    "file": "tests/test_filters_cat.py",
+    "line_start": 13,
+    "line_end": 18,
+    "signature": "test_cat_matches()",
+    "docstring": null
+  },
+  {
+    "name": "test_cat_short_file_unchanged",
+    "kind": "function",
+    "file": "tests/test_filters_cat.py",
+    "line_start": 21,
+    "line_end": 26,
+    "signature": "test_cat_short_file_unchanged()",
+    "docstring": null
+  },
+  {
+    "name": "test_cat_truncates_long_file",
+    "kind": "function",
+    "file": "tests/test_filters_cat.py",
+    "line_start": 29,
+    "line_end": 34,
+    "signature": "test_cat_truncates_long_file()",
+    "docstring": null
+  },
+  {
+    "name": "test_cat_truncated_shows_head_and_tail",
+    "kind": "function",
+    "file": "tests/test_filters_cat.py",
+    "line_start": 37,
+    "line_end": 41,
+    "signature": "test_cat_truncated_shows_head_and_tail()",
+    "docstring": null
+  },
+  {
+    "name": "test_cat_strips_blank_lines",
+    "kind": "function",
+    "file": "tests/test_filters_cat.py",
+    "line_start": 44,
+    "line_end": 56,
+    "signature": "test_cat_strips_blank_lines()",
+    "docstring": null
+  },
+  {
+    "name": "test_cat_savings_example",
+    "kind": "function",
+    "file": "tests/test_filters_cat.py",
+    "line_start": 59,
+    "line_end": 61,
+    "signature": "test_cat_savings_example()",
+    "docstring": null
+  },
+  {
+    "name": "tests.test_filters_curl",
+    "kind": "module",
+    "file": "tests/test_filters_curl.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "test_matches_curl",
+    "kind": "function",
+    "file": "tests/test_filters_curl.py",
+    "line_start": 7,
+    "line_end": 8,
+    "signature": "test_matches_curl()",
+    "docstring": null
+  },
+  {
+    "name": "test_matches_http",
+    "kind": "function",
+    "file": "tests/test_filters_curl.py",
+    "line_start": 10,
+    "line_end": 11,
+    "signature": "test_matches_http()",
+    "docstring": null
+  },
+  {
+    "name": "test_matches_wget",
+    "kind": "function",
+    "file": "tests/test_filters_curl.py",
+    "line_start": 13,
+    "line_end": 14,
+    "signature": "test_matches_wget()",
+    "docstring": null
+  },
+  {
+    "name": "test_no_match",
+    "kind": "function",
+    "file": "tests/test_filters_curl.py",
+    "line_start": 16,
+    "line_end": 19,
+    "signature": "test_no_match()",
+    "docstring": null
+  },
+  {
+    "name": "test_curl_verbose_strips_tls",
+    "kind": "function",
+    "file": "tests/test_filters_curl.py",
+    "line_start": 22,
+    "line_end": 36,
+    "signature": "test_curl_verbose_strips_tls()",
+    "docstring": null
+  },
+  {
+    "name": "test_curl_json_truncated",
+    "kind": "function",
+    "file": "tests/test_filters_curl.py",
+    "line_start": 39,
+    "line_end": 47,
+    "signature": "test_curl_json_truncated()",
+    "docstring": null
+  },
+  {
+    "name": "test_curl_error_kept_full",
+    "kind": "function",
+    "file": "tests/test_filters_curl.py",
+    "line_start": 50,
+    "line_end": 62,
+    "signature": "test_curl_error_kept_full()",
+    "docstring": null
+  },
+  {
+    "name": "test_curl_strips_progress",
+    "kind": "function",
+    "file": "tests/test_filters_curl.py",
+    "line_start": 65,
+    "line_end": 73,
+    "signature": "test_curl_strips_progress()",
+    "docstring": null
+  },
+  {
+    "name": "test_wget_strips_progress",
+    "kind": "function",
+    "file": "tests/test_filters_curl.py",
+    "line_start": 76,
+    "line_end": 87,
+    "signature": "test_wget_strips_progress()",
+    "docstring": null
+  },
+  {
+    "name": "test_curl_plain_response_passthrough",
+    "kind": "function",
+    "file": "tests/test_filters_curl.py",
+    "line_start": 90,
+    "line_end": 94,
+    "signature": "test_curl_plain_response_passthrough()",
+    "docstring": null
+  },
+  {
+    "name": "tests.test_filters_docker",
+    "kind": "module",
+    "file": "tests/test_filters_docker.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "f",
+    "kind": "function",
+    "file": "tests/test_filters_docker.py",
+    "line_start": 5,
+    "line_end": 6,
+    "signature": "f()",
+    "docstring": null
+  },
+  {
+    "name": "test_matches_docker",
+    "kind": "function",
+    "file": "tests/test_filters_docker.py",
+    "line_start": 8,
+    "line_end": 11,
+    "signature": "test_matches_docker(f)",
+    "docstring": null
+  },
+  {
+    "name": "test_docker_ps_compressed",
+    "kind": "function",
+    "file": "tests/test_filters_docker.py",
+    "line_start": 13,
+    "line_end": 24,
+    "signature": "test_docker_ps_compressed(f)",
+    "docstring": null
+  },
+  {
+    "name": "test_docker_images_compressed",
+    "kind": "function",
+    "file": "tests/test_filters_docker.py",
+    "line_start": 26,
+    "line_end": 36,
+    "signature": "test_docker_images_compressed(f)",
+    "docstring": null
+  },
+  {
+    "name": "test_docker_logs_truncates",
+    "kind": "function",
+    "file": "tests/test_filters_docker.py",
+    "line_start": 38,
+    "line_end": 44,
+    "signature": "test_docker_logs_truncates(f)",
+    "docstring": null
+  },
+  {
+    "name": "test_docker_logs_strips_ansi",
+    "kind": "function",
+    "file": "tests/test_filters_docker.py",
+    "line_start": 46,
+    "line_end": 50,
+    "signature": "test_docker_logs_strips_ansi(f)",
+    "docstring": null
+  },
+  {
+    "name": "test_docker_logs_deduplicates",
+    "kind": "function",
+    "file": "tests/test_filters_docker.py",
+    "line_start": 52,
+    "line_end": 59,
+    "signature": "test_docker_logs_deduplicates(f)",
+    "docstring": null
+  },
+  {
+    "name": "test_docker_build_strips_steps",
+    "kind": "function",
+    "file": "tests/test_filters_docker.py",
+    "line_start": 61,
+    "line_end": 76,
+    "signature": "test_docker_build_strips_steps(f)",
+    "docstring": null
+  },
+  {
+    "name": "test_docker_build_keeps_errors",
+    "kind": "function",
+    "file": "tests/test_filters_docker.py",
+    "line_start": 78,
+    "line_end": 87,
+    "signature": "test_docker_build_keeps_errors(f)",
+    "docstring": null
+  },
+  {
+    "name": "test_docker_compose_up_compressed",
+    "kind": "function",
+    "file": "tests/test_filters_docker.py",
+    "line_start": 89,
+    "line_end": 99,
+    "signature": "test_docker_compose_up_compressed(f)",
+    "docstring": null
+  },
+  {
+    "name": "test_docker_compose_via_compose_cmd",
+    "kind": "function",
+    "file": "tests/test_filters_docker.py",
+    "line_start": 101,
+    "line_end": 104,
+    "signature": "test_docker_compose_via_compose_cmd(f)",
+    "docstring": null
+  },
+  {
+    "name": "test_docker_inspect_compresses_json",
+    "kind": "function",
+    "file": "tests/test_filters_docker.py",
+    "line_start": 107,
+    "line_end": 116,
+    "signature": "test_docker_inspect_compresses_json()",
+    "docstring": null
+  },
+  {
+    "name": "tests.test_filters_git",
+    "kind": "module",
+    "file": "tests/test_filters_git.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "test_git_matches",
+    "kind": "function",
+    "file": "tests/test_filters_git.py",
+    "line_start": 67,
+    "line_end": 70,
+    "signature": "test_git_matches()",
+    "docstring": null
+  },
+  {
+    "name": "test_git_status_strips_hints",
+    "kind": "function",
+    "file": "tests/test_filters_git.py",
+    "line_start": 73,
+    "line_end": 79,
+    "signature": "test_git_status_strips_hints()",
+    "docstring": null
+  },
+  {
+    "name": "test_git_status_keeps_changed_files",
+    "kind": "function",
+    "file": "tests/test_filters_git.py",
+    "line_start": 82,
+    "line_end": 85,
+    "signature": "test_git_status_keeps_changed_files()",
+    "docstring": null
+  },
+  {
+    "name": "test_git_diff_strips_index_lines",
+    "kind": "function",
+    "file": "tests/test_filters_git.py",
+    "line_start": 88,
+    "line_end": 92,
+    "signature": "test_git_diff_strips_index_lines()",
+    "docstring": null
+  },
+  {
+    "name": "test_git_push_compressed",
+    "kind": "function",
+    "file": "tests/test_filters_git.py",
+    "line_start": 95,
+    "line_end": 100,
+    "signature": "test_git_push_compressed()",
+    "docstring": null
+  },
+  {
+    "name": "test_git_commit_compressed",
+    "kind": "function",
+    "file": "tests/test_filters_git.py",
+    "line_start": 103,
+    "line_end": 106,
+    "signature": "test_git_commit_compressed()",
+    "docstring": null
+  },
+  {
+    "name": "test_git_log_strips_author_date",
+    "kind": "function",
+    "file": "tests/test_filters_git.py",
+    "line_start": 109,
+    "line_end": 114,
+    "signature": "test_git_log_strips_author_date()",
+    "docstring": null
+  },
+  {
+    "name": "test_git_savings_example",
+    "kind": "function",
+    "file": "tests/test_filters_git.py",
+    "line_start": 117,
+    "line_end": 119,
+    "signature": "test_git_savings_example()",
+    "docstring": null
+  },
+  {
+    "name": "tests.test_filters_grep",
+    "kind": "module",
+    "file": "tests/test_filters_grep.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "make_grep_output",
+    "kind": "function",
+    "file": "tests/test_filters_grep.py",
+    "line_start": 6,
+    "line_end": 10,
+    "signature": "make_grep_output(n)",
+    "docstring": null
+  },
+  {
+    "name": "test_grep_matches",
+    "kind": "function",
+    "file": "tests/test_filters_grep.py",
+    "line_start": 24,
+    "line_end": 28,
+    "signature": "test_grep_matches()",
+    "docstring": null
+  },
+  {
+    "name": "test_grep_max_matches",
+    "kind": "function",
+    "file": "tests/test_filters_grep.py",
+    "line_start": 31,
+    "line_end": 36,
+    "signature": "test_grep_max_matches()",
+    "docstring": null
+  },
+  {
+    "name": "test_grep_same_file_grouping",
+    "kind": "function",
+    "file": "tests/test_filters_grep.py",
+    "line_start": 39,
+    "line_end": 43,
+    "signature": "test_grep_same_file_grouping()",
+    "docstring": null
+  },
+  {
+    "name": "test_grep_strips_binary",
+    "kind": "function",
+    "file": "tests/test_filters_grep.py",
+    "line_start": 46,
+    "line_end": 50,
+    "signature": "test_grep_strips_binary()",
+    "docstring": null
+  },
+  {
+    "name": "test_grep_savings_example",
+    "kind": "function",
+    "file": "tests/test_filters_grep.py",
+    "line_start": 53,
+    "line_end": 55,
+    "signature": "test_grep_savings_example()",
+    "docstring": null
+  },
+  {
+    "name": "tests.test_filters_kubectl",
+    "kind": "module",
+    "file": "tests/test_filters_kubectl.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "test_matches_kubectl",
+    "kind": "function",
+    "file": "tests/test_filters_kubectl.py",
+    "line_start": 7,
+    "line_end": 8,
+    "signature": "test_matches_kubectl()",
+    "docstring": null
+  },
+  {
+    "name": "test_matches_k_alias",
+    "kind": "function",
+    "file": "tests/test_filters_kubectl.py",
+    "line_start": 10,
+    "line_end": 11,
+    "signature": "test_matches_k_alias()",
+    "docstring": null
+  },
+  {
+    "name": "test_no_match",
+    "kind": "function",
+    "file": "tests/test_filters_kubectl.py",
+    "line_start": 13,
+    "line_end": 15,
+    "signature": "test_no_match()",
+    "docstring": null
+  },
+  {
+    "name": "test_kubectl_get_pods_strips_columns",
+    "kind": "function",
+    "file": "tests/test_filters_kubectl.py",
+    "line_start": 24,
+    "line_end": 33,
+    "signature": "test_kubectl_get_pods_strips_columns()",
+    "docstring": null
+  },
+  {
+    "name": "test_kubectl_describe_strips_annotations",
+    "kind": "function",
+    "file": "tests/test_filters_kubectl.py",
+    "line_start": 50,
+    "line_end": 55,
+    "signature": "test_kubectl_describe_strips_annotations()",
+    "docstring": null
+  },
+  {
+    "name": "test_kubectl_describe_keeps_warning_events",
+    "kind": "function",
+    "file": "tests/test_filters_kubectl.py",
+    "line_start": 68,
+    "line_end": 72,
+    "signature": "test_kubectl_describe_keeps_warning_events()",
+    "docstring": null
+  },
+  {
+    "name": "test_kubectl_describe_strips_normal_events",
+    "kind": "function",
+    "file": "tests/test_filters_kubectl.py",
+    "line_start": 86,
+    "line_end": 90,
+    "signature": "test_kubectl_describe_strips_normal_events()",
+    "docstring": null
+  },
+  {
+    "name": "test_kubectl_logs_truncates",
+    "kind": "function",
+    "file": "tests/test_filters_kubectl.py",
+    "line_start": 93,
+    "line_end": 99,
+    "signature": "test_kubectl_logs_truncates()",
+    "docstring": null
+  },
+  {
+    "name": "test_kubectl_logs_strips_ansi",
+    "kind": "function",
+    "file": "tests/test_filters_kubectl.py",
+    "line_start": 102,
+    "line_end": 106,
+    "signature": "test_kubectl_logs_strips_ansi()",
+    "docstring": null
+  },
+  {
+    "name": "test_kubectl_logs_deduplicates",
+    "kind": "function",
+    "file": "tests/test_filters_kubectl.py",
+    "line_start": 109,
+    "line_end": 115,
+    "signature": "test_kubectl_logs_deduplicates()",
+    "docstring": null
+  },
+  {
+    "name": "test_kubectl_events_warnings_only",
+    "kind": "function",
+    "file": "tests/test_filters_kubectl.py",
+    "line_start": 125,
+    "line_end": 130,
+    "signature": "test_kubectl_events_warnings_only()",
+    "docstring": null
+  },
+  {
+    "name": "test_kubectl_apply_compact",
+    "kind": "function",
+    "file": "tests/test_filters_kubectl.py",
+    "line_start": 133,
+    "line_end": 140,
+    "signature": "test_kubectl_apply_compact()",
+    "docstring": null
+  },
+  {
+    "name": "test_kubectl_rollout_last_line_only",
+    "kind": "function",
+    "file": "tests/test_filters_kubectl.py",
+    "line_start": 143,
+    "line_end": 146,
+    "signature": "test_kubectl_rollout_last_line_only()",
+    "docstring": null
+  },
+  {
+    "name": "tests.test_filters_lint",
+    "kind": "module",
+    "file": "tests/test_filters_lint.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "test_matches_ruff",
+    "kind": "function",
+    "file": "tests/test_filters_lint.py",
+    "line_start": 5,
+    "line_end": 13,
+    "signature": "test_matches_ruff()",
+    "docstring": null
+  },
+  {
+    "name": "test_ruff_clean",
+    "kind": "function",
+    "file": "tests/test_filters_lint.py",
+    "line_start": 16,
+    "line_end": 19,
+    "signature": "test_ruff_clean()",
+    "docstring": null
+  },
+  {
+    "name": "test_ruff_with_errors",
+    "kind": "function",
+    "file": "tests/test_filters_lint.py",
+    "line_start": 22,
+    "line_end": 27,
+    "signature": "test_ruff_with_errors()",
+    "docstring": null
+  },
+  {
+    "name": "test_mypy_clean",
+    "kind": "function",
+    "file": "tests/test_filters_lint.py",
+    "line_start": 30,
+    "line_end": 33,
+    "signature": "test_mypy_clean()",
+    "docstring": null
+  },
+  {
+    "name": "test_mypy_errors",
+    "kind": "function",
+    "file": "tests/test_filters_lint.py",
+    "line_start": 36,
+    "line_end": 41,
+    "signature": "test_mypy_errors()",
+    "docstring": null
+  },
+  {
+    "name": "test_flake8_clean",
+    "kind": "function",
+    "file": "tests/test_filters_lint.py",
+    "line_start": 44,
+    "line_end": 47,
+    "signature": "test_flake8_clean()",
+    "docstring": null
+  },
+  {
+    "name": "test_tsc_clean",
+    "kind": "function",
+    "file": "tests/test_filters_lint.py",
+    "line_start": 50,
+    "line_end": 53,
+    "signature": "test_tsc_clean()",
+    "docstring": null
+  },
+  {
+    "name": "test_tsc_errors",
+    "kind": "function",
+    "file": "tests/test_filters_lint.py",
+    "line_start": 56,
+    "line_end": 62,
+    "signature": "test_tsc_errors()",
+    "docstring": null
+  },
+  {
+    "name": "test_ansi_stripped",
+    "kind": "function",
+    "file": "tests/test_filters_lint.py",
+    "line_start": 65,
+    "line_end": 70,
+    "signature": "test_ansi_stripped()",
+    "docstring": null
+  },
+  {
+    "name": "tests.test_filters_ls",
+    "kind": "module",
+    "file": "tests/test_filters_ls.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "test_ls_matches",
+    "kind": "function",
+    "file": "tests/test_filters_ls.py",
+    "line_start": 17,
+    "line_end": 21,
+    "signature": "test_ls_matches()",
+    "docstring": null
+  },
+  {
+    "name": "test_ls_filter_removes_permissions",
+    "kind": "function",
+    "file": "tests/test_filters_ls.py",
+    "line_start": 24,
+    "line_end": 29,
+    "signature": "test_ls_filter_removes_permissions()",
+    "docstring": null
+  },
+  {
+    "name": "test_ls_filter_removes_total_line",
+    "kind": "function",
+    "file": "tests/test_filters_ls.py",
+    "line_start": 32,
+    "line_end": 34,
+    "signature": "test_ls_filter_removes_total_line()",
+    "docstring": null
+  },
+  {
+    "name": "test_ls_filter_truncates_long",
+    "kind": "function",
+    "file": "tests/test_filters_ls.py",
+    "line_start": 37,
+    "line_end": 47,
+    "signature": "test_ls_filter_truncates_long()",
+    "docstring": null
+  },
+  {
+    "name": "test_ls_filter_find_passthrough",
+    "kind": "function",
+    "file": "tests/test_filters_ls.py",
+    "line_start": 50,
+    "line_end": 53,
+    "signature": "test_ls_filter_find_passthrough()",
+    "docstring": null
+  },
+  {
+    "name": "test_ls_savings_example",
+    "kind": "function",
+    "file": "tests/test_filters_ls.py",
+    "line_start": 56,
+    "line_end": 59,
+    "signature": "test_ls_savings_example()",
+    "docstring": null
+  },
+  {
+    "name": "tests.test_filters_new",
+    "kind": "module",
+    "file": "tests/test_filters_new.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "TestMakeFilter",
+    "kind": "class",
+    "file": "tests/test_filters_new.py",
+    "line_start": 10,
+    "line_end": 52,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "TestMakeFilter.setup_method",
+    "kind": "function",
+    "file": "tests/test_filters_new.py",
+    "line_start": 11,
+    "line_end": 12,
+    "signature": "setup_method(self)",
+    "docstring": null
+  },
+  {
+    "name": "TestMakeFilter.test_strips_entering_leaving_directory",
+    "kind": "function",
+    "file": "tests/test_filters_new.py",
+    "line_start": 14,
+    "line_end": 23,
+    "signature": "test_strips_entering_leaving_directory(self)",
+    "docstring": null
+  },
+  {
+    "name": "TestMakeFilter.test_strips_tab_echo_lines",
+    "kind": "function",
+    "file": "tests/test_filters_new.py",
+    "line_start": 25,
+    "line_end": 36,
+    "signature": "test_strips_tab_echo_lines(self)",
+    "docstring": null
+  },
+  {
+    "name": "TestMakeFilter.test_error_lines_preserved",
+    "kind": "function",
+    "file": "tests/test_filters_new.py",
+    "line_start": 38,
+    "line_end": 46,
+    "signature": "test_error_lines_preserved(self)",
+    "docstring": null
+  },
+  {
+    "name": "TestMakeFilter.test_matches_make_command",
+    "kind": "function",
+    "file": "tests/test_filters_new.py",
+    "line_start": 48,
+    "line_end": 52,
+    "signature": "test_matches_make_command(self)",
+    "docstring": null
+  },
+  {
+    "name": "TestTerraformFilter",
+    "kind": "class",
+    "file": "tests/test_filters_new.py",
+    "line_start": 57,
+    "line_end": 96,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "TestTerraformFilter.setup_method",
+    "kind": "function",
+    "file": "tests/test_filters_new.py",
+    "line_start": 58,
+    "line_end": 59,
+    "signature": "setup_method(self)",
+    "docstring": null
+  },
+  {
+    "name": "TestTerraformFilter.test_strips_refreshing_state",
+    "kind": "function",
+    "file": "tests/test_filters_new.py",
+    "line_start": 61,
+    "line_end": 69,
+    "signature": "test_strips_refreshing_state(self)",
+    "docstring": null
+  },
+  {
+    "name": "TestTerraformFilter.test_keeps_error_and_warning_lines",
+    "kind": "function",
+    "file": "tests/test_filters_new.py",
+    "line_start": 71,
+    "line_end": 79,
+    "signature": "test_keeps_error_and_warning_lines(self)",
+    "docstring": null
+  },
+  {
+    "name": "TestTerraformFilter.test_keeps_apply_complete",
+    "kind": "function",
+    "file": "tests/test_filters_new.py",
+    "line_start": 81,
+    "line_end": 90,
+    "signature": "test_keeps_apply_complete(self)",
+    "docstring": null
+  },
+  {
+    "name": "TestTerraformFilter.test_matches_terraform_command",
+    "kind": "function",
+    "file": "tests/test_filters_new.py",
+    "line_start": 92,
+    "line_end": 96,
+    "signature": "test_matches_terraform_command(self)",
+    "docstring": null
+  },
+  {
+    "name": "TestPackageManagerFilter",
+    "kind": "class",
+    "file": "tests/test_filters_new.py",
+    "line_start": 101,
+    "line_end": 153,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "TestPackageManagerFilter.setup_method",
+    "kind": "function",
+    "file": "tests/test_filters_new.py",
+    "line_start": 102,
+    "line_end": 103,
+    "signature": "setup_method(self)",
+    "docstring": null
+  },
+  {
+    "name": "TestPackageManagerFilter.test_strips_download_progress",
+    "kind": "function",
+    "file": "tests/test_filters_new.py",
+    "line_start": 105,
+    "line_end": 113,
+    "signature": "test_strips_download_progress(self)",
+    "docstring": null
+  },
+  {
+    "name": "TestPackageManagerFilter.test_strips_wheel_build_noise",
+    "kind": "function",
+    "file": "tests/test_filters_new.py",
+    "line_start": 115,
+    "line_end": 127,
+    "signature": "test_strips_wheel_build_noise(self)",
+    "docstring": null
+  },
+  {
+    "name": "TestPackageManagerFilter.test_keeps_error_and_warning",
+    "kind": "function",
+    "file": "tests/test_filters_new.py",
+    "line_start": 129,
+    "line_end": 138,
+    "signature": "test_keeps_error_and_warning(self)",
+    "docstring": null
+  },
+  {
+    "name": "TestPackageManagerFilter.test_strips_block_char_progress",
+    "kind": "function",
+    "file": "tests/test_filters_new.py",
+    "line_start": 140,
+    "line_end": 145,
+    "signature": "test_strips_block_char_progress(self)",
+    "docstring": null
+  },
+  {
+    "name": "TestPackageManagerFilter.test_matches_commands",
+    "kind": "function",
+    "file": "tests/test_filters_new.py",
+    "line_start": 147,
+    "line_end": 153,
+    "signature": "test_matches_commands(self)",
+    "docstring": null
+  },
+  {
+    "name": "tests.test_filters_npm",
+    "kind": "module",
+    "file": "tests/test_filters_npm.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "test_matches_npm",
+    "kind": "function",
+    "file": "tests/test_filters_npm.py",
+    "line_start": 7,
+    "line_end": 8,
+    "signature": "test_matches_npm()",
+    "docstring": null
+  },
+  {
+    "name": "test_matches_yarn",
+    "kind": "function",
+    "file": "tests/test_filters_npm.py",
+    "line_start": 10,
+    "line_end": 11,
+    "signature": "test_matches_yarn()",
+    "docstring": null
+  },
+  {
+    "name": "test_matches_pnpm",
+    "kind": "function",
+    "file": "tests/test_filters_npm.py",
+    "line_start": 13,
+    "line_end": 14,
+    "signature": "test_matches_pnpm()",
+    "docstring": null
+  },
+  {
+    "name": "test_matches_npx",
+    "kind": "function",
+    "file": "tests/test_filters_npm.py",
+    "line_start": 16,
+    "line_end": 17,
+    "signature": "test_matches_npx()",
+    "docstring": null
+  },
+  {
+    "name": "test_no_match",
+    "kind": "function",
+    "file": "tests/test_filters_npm.py",
+    "line_start": 19,
+    "line_end": 21,
+    "signature": "test_no_match()",
+    "docstring": null
+  },
+  {
+    "name": "test_npm_install_strips_progress",
+    "kind": "function",
+    "file": "tests/test_filters_npm.py",
+    "line_start": 31,
+    "line_end": 34,
+    "signature": "test_npm_install_strips_progress()",
+    "docstring": null
+  },
+  {
+    "name": "test_npm_install_keeps_deprecation",
+    "kind": "function",
+    "file": "tests/test_filters_npm.py",
+    "line_start": 36,
+    "line_end": 38,
+    "signature": "test_npm_install_keeps_deprecation()",
+    "docstring": null
+  },
+  {
+    "name": "test_npm_run_strips_header",
+    "kind": "function",
+    "file": "tests/test_filters_npm.py",
+    "line_start": 50,
+    "line_end": 55,
+    "signature": "test_npm_run_strips_header()",
+    "docstring": null
+  },
+  {
+    "name": "test_npm_audit_summary_only",
+    "kind": "function",
+    "file": "tests/test_filters_npm.py",
+    "line_start": 70,
+    "line_end": 75,
+    "signature": "test_npm_audit_summary_only()",
+    "docstring": null
+  },
+  {
+    "name": "test_yarn_add_compressed",
+    "kind": "function",
+    "file": "tests/test_filters_npm.py",
+    "line_start": 92,
+    "line_end": 95,
+    "signature": "test_yarn_add_compressed()",
+    "docstring": null
+  },
+  {
+    "name": "test_pnpm_install_compressed",
+    "kind": "function",
+    "file": "tests/test_filters_npm.py",
+    "line_start": 106,
+    "line_end": 108,
+    "signature": "test_pnpm_install_compressed()",
+    "docstring": null
+  },
+  {
+    "name": "test_npx_strips_install_prompt",
+    "kind": "function",
+    "file": "tests/test_filters_npm.py",
+    "line_start": 118,
+    "line_end": 122,
+    "signature": "test_npx_strips_install_prompt()",
+    "docstring": null
+  },
+  {
+    "name": "tests.test_filters_poetry",
+    "kind": "module",
+    "file": "tests/test_filters_poetry.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "test_poetry_matches",
+    "kind": "function",
+    "file": "tests/test_filters_poetry.py",
+    "line_start": 4,
+    "line_end": 9,
+    "signature": "test_poetry_matches()",
+    "docstring": null
+  },
+  {
+    "name": "test_poetry_install_filters",
+    "kind": "function",
+    "file": "tests/test_filters_poetry.py",
+    "line_start": 12,
+    "line_end": 29,
+    "signature": "test_poetry_install_filters()",
+    "docstring": null
+  },
+  {
+    "name": "test_poetry_install_fallback_when_no_match",
+    "kind": "function",
+    "file": "tests/test_filters_poetry.py",
+    "line_start": 32,
+    "line_end": 36,
+    "signature": "test_poetry_install_fallback_when_no_match()",
+    "docstring": null
+  },
+  {
+    "name": "test_poetry_run_dispatches_to_inner_filter",
+    "kind": "function",
+    "file": "tests/test_filters_poetry.py",
+    "line_start": 39,
+    "line_end": 45,
+    "signature": "test_poetry_run_dispatches_to_inner_filter()",
+    "docstring": null
+  },
+  {
+    "name": "test_poetry_run_unknown_inner_returns_output",
+    "kind": "function",
+    "file": "tests/test_filters_poetry.py",
+    "line_start": 48,
+    "line_end": 52,
+    "signature": "test_poetry_run_unknown_inner_returns_output()",
+    "docstring": null
+  },
+  {
+    "name": "tests.test_filters_test",
+    "kind": "module",
+    "file": "tests/test_filters_test.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "test_pytest_matches",
+    "kind": "function",
+    "file": "tests/test_filters_test.py",
+    "line_start": 56,
+    "line_end": 62,
+    "signature": "test_pytest_matches()",
+    "docstring": null
+  },
+  {
+    "name": "test_pytest_keeps_failures",
+    "kind": "function",
+    "file": "tests/test_filters_test.py",
+    "line_start": 65,
+    "line_end": 68,
+    "signature": "test_pytest_keeps_failures()",
+    "docstring": null
+  },
+  {
+    "name": "test_pytest_strips_passing",
+    "kind": "function",
+    "file": "tests/test_filters_test.py",
+    "line_start": 71,
+    "line_end": 74,
+    "signature": "test_pytest_strips_passing()",
+    "docstring": null
+  },
+  {
+    "name": "test_pytest_keeps_summary",
+    "kind": "function",
+    "file": "tests/test_filters_test.py",
+    "line_start": 77,
+    "line_end": 79,
+    "signature": "test_pytest_keeps_summary()",
+    "docstring": null
+  },
+  {
+    "name": "test_pytest_all_passing_just_summary",
+    "kind": "function",
+    "file": "tests/test_filters_test.py",
+    "line_start": 82,
+    "line_end": 86,
+    "signature": "test_pytest_all_passing_just_summary()",
+    "docstring": null
+  },
+  {
+    "name": "test_pytest_savings_example",
+    "kind": "function",
+    "file": "tests/test_filters_test.py",
+    "line_start": 89,
+    "line_end": 91,
+    "signature": "test_pytest_savings_example()",
+    "docstring": null
+  },
+  {
+    "name": "tests.test_filters_uv",
+    "kind": "module",
+    "file": "tests/test_filters_uv.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "test_matches_uv",
+    "kind": "function",
+    "file": "tests/test_filters_uv.py",
+    "line_start": 3,
+    "line_end": 8,
+    "signature": "test_matches_uv()",
+    "docstring": null
+  },
+  {
+    "name": "test_uv_run_pytest_dispatches_to_test_filter",
+    "kind": "function",
+    "file": "tests/test_filters_uv.py",
+    "line_start": 10,
+    "line_end": 15,
+    "signature": "test_uv_run_pytest_dispatches_to_test_filter()",
+    "docstring": null
+  },
+  {
+    "name": "test_uv_run_python_pytest_dispatches",
+    "kind": "function",
+    "file": "tests/test_filters_uv.py",
+    "line_start": 17,
+    "line_end": 22,
+    "signature": "test_uv_run_python_pytest_dispatches()",
+    "docstring": null
+  },
+  {
+    "name": "test_uv_pip_install_filters_resolved",
+    "kind": "function",
+    "file": "tests/test_filters_uv.py",
+    "line_start": 24,
+    "line_end": 28,
+    "signature": "test_uv_pip_install_filters_resolved()",
+    "docstring": null
+  },
+  {
+    "name": "test_uv_sync_filters",
+    "kind": "function",
+    "file": "tests/test_filters_uv.py",
+    "line_start": 30,
+    "line_end": 34,
+    "signature": "test_uv_sync_filters()",
+    "docstring": null
+  },
+  {
+    "name": "tests.test_gain_export",
+    "kind": "module",
+    "file": "tests/test_gain_export.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "write_stats",
+    "kind": "function",
+    "file": "tests/test_gain_export.py",
+    "line_start": 39,
+    "line_end": 45,
+    "signature": "write_stats(path, records)",
+    "docstring": null
+  },
+  {
+    "name": "tmp_stats",
+    "kind": "function",
+    "file": "tests/test_gain_export.py",
+    "line_start": 49,
+    "line_end": 53,
+    "signature": "tmp_stats(tmp_path)",
+    "docstring": null
+  },
+  {
+    "name": "test_gain_default_table",
+    "kind": "function",
+    "file": "tests/test_gain_export.py",
+    "line_start": 56,
+    "line_end": 61,
+    "signature": "test_gain_default_table(tmp_stats)",
+    "docstring": null
+  },
+  {
+    "name": "test_gain_json_format",
+    "kind": "function",
+    "file": "tests/test_gain_export.py",
+    "line_start": 64,
+    "line_end": 74,
+    "signature": "test_gain_json_format(tmp_stats)",
+    "docstring": null
+  },
+  {
+    "name": "test_gain_csv_format",
+    "kind": "function",
+    "file": "tests/test_gain_export.py",
+    "line_start": 77,
+    "line_end": 85,
+    "signature": "test_gain_csv_format(tmp_stats)",
+    "docstring": null
+  },
+  {
+    "name": "test_gain_markdown_format",
+    "kind": "function",
+    "file": "tests/test_gain_export.py",
+    "line_start": 88,
+    "line_end": 94,
+    "signature": "test_gain_markdown_format(tmp_stats)",
+    "docstring": null
+  },
+  {
+    "name": "test_gain_since_days",
+    "kind": "function",
+    "file": "tests/test_gain_export.py",
+    "line_start": 97,
+    "line_end": 114,
+    "signature": "test_gain_since_days(tmp_path)",
+    "docstring": null
+  },
+  {
+    "name": "test_gain_reset",
+    "kind": "function",
+    "file": "tests/test_gain_export.py",
+    "line_start": 117,
+    "line_end": 121,
+    "signature": "test_gain_reset(tmp_stats)",
+    "docstring": null
+  },
+  {
+    "name": "test_gain_no_stats",
+    "kind": "function",
+    "file": "tests/test_gain_export.py",
+    "line_start": 124,
+    "line_end": 131,
+    "signature": "test_gain_no_stats(tmp_path)",
+    "docstring": null
+  },
+  {
+    "name": "test_gain_no_stats_json_format",
+    "kind": "function",
+    "file": "tests/test_gain_export.py",
+    "line_start": 134,
+    "line_end": 140,
+    "signature": "test_gain_no_stats_json_format(tmp_path)",
+    "docstring": null
+  },
+  {
+    "name": "tests.test_hook",
+    "kind": "module",
+    "file": "tests/test_hook.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "test_enable_writes_bash",
+    "kind": "function",
+    "file": "tests/test_hook.py",
+    "line_start": 8,
+    "line_end": 17,
+    "signature": "test_enable_writes_bash(tmp_path)",
+    "docstring": null
+  },
+  {
+    "name": "test_enable_writes_zsh",
+    "kind": "function",
+    "file": "tests/test_hook.py",
+    "line_start": 20,
+    "line_end": 24,
+    "signature": "test_enable_writes_zsh(tmp_path)",
+    "docstring": null
+  },
+  {
+    "name": "test_enable_idempotent",
+    "kind": "function",
+    "file": "tests/test_hook.py",
+    "line_start": 27,
+    "line_end": 35,
+    "signature": "test_enable_idempotent(tmp_path)",
+    "docstring": null
+  },
+  {
+    "name": "test_disable_removes_section",
+    "kind": "function",
+    "file": "tests/test_hook.py",
+    "line_start": 38,
+    "line_end": 45,
+    "signature": "test_disable_removes_section(tmp_path)",
+    "docstring": null
+  },
+  {
+    "name": "test_disable_when_not_enabled",
+    "kind": "function",
+    "file": "tests/test_hook.py",
+    "line_start": 48,
+    "line_end": 54,
+    "signature": "test_disable_when_not_enabled(tmp_path)",
+    "docstring": null
+  },
+  {
+    "name": "test_disable_preserves_surrounding_content",
+    "kind": "function",
+    "file": "tests/test_hook.py",
+    "line_start": 57,
+    "line_end": 67,
+    "signature": "test_disable_preserves_surrounding_content(tmp_path)",
+    "docstring": null
+  },
+  {
+    "name": "test_status_active",
+    "kind": "function",
+    "file": "tests/test_hook.py",
+    "line_start": 70,
+    "line_end": 75,
+    "signature": "test_status_active(tmp_path)",
+    "docstring": null
+  },
+  {
+    "name": "test_status_inactive",
+    "kind": "function",
+    "file": "tests/test_hook.py",
+    "line_start": 78,
+    "line_end": 81,
+    "signature": "test_status_inactive(tmp_path)",
+    "docstring": null
+  },
+  {
+    "name": "test_fish_hook_syntax",
+    "kind": "function",
+    "file": "tests/test_hook.py",
+    "line_start": 84,
+    "line_end": 89,
+    "signature": "test_fish_hook_syntax(tmp_path)",
+    "docstring": null
+  },
+  {
+    "name": "test_cli_hook_enable",
+    "kind": "function",
+    "file": "tests/test_hook.py",
+    "line_start": 93,
+    "line_end": 99,
+    "signature": "test_cli_hook_enable(tmp_path, monkeypatch)",
+    "docstring": null
+  },
+  {
+    "name": "test_cli_hook_disable",
+    "kind": "function",
+    "file": "tests/test_hook.py",
+    "line_start": 102,
+    "line_end": 108,
+    "signature": "test_cli_hook_disable(tmp_path, monkeypatch)",
+    "docstring": null
+  },
+  {
+    "name": "test_cli_hook_status",
+    "kind": "function",
+    "file": "tests/test_hook.py",
+    "line_start": 111,
+    "line_end": 116,
+    "signature": "test_cli_hook_status(tmp_path, monkeypatch)",
+    "docstring": null
+  },
+  {
+    "name": "tests.test_hooks",
+    "kind": "module",
+    "file": "tests/test_hooks.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "test_should_rewrite_git",
+    "kind": "function",
+    "file": "tests/test_hooks.py",
+    "line_start": 14,
+    "line_end": 15,
+    "signature": "test_should_rewrite_git()",
+    "docstring": null
+  },
+  {
+    "name": "test_should_rewrite_pytest",
+    "kind": "function",
+    "file": "tests/test_hooks.py",
+    "line_start": 17,
+    "line_end": 18,
+    "signature": "test_should_rewrite_pytest()",
+    "docstring": null
+  },
+  {
+    "name": "test_should_rewrite_ls",
+    "kind": "function",
+    "file": "tests/test_hooks.py",
+    "line_start": 20,
+    "line_end": 21,
+    "signature": "test_should_rewrite_ls()",
+    "docstring": null
+  },
+  {
+    "name": "test_should_rewrite_python_m_pytest",
+    "kind": "function",
+    "file": "tests/test_hooks.py",
+    "line_start": 23,
+    "line_end": 24,
+    "signature": "test_should_rewrite_python_m_pytest()",
+    "docstring": null
+  },
+  {
+    "name": "test_should_rewrite_python3_m_pytest",
+    "kind": "function",
+    "file": "tests/test_hooks.py",
+    "line_start": 26,
+    "line_end": 27,
+    "signature": "test_should_rewrite_python3_m_pytest()",
+    "docstring": null
+  },
+  {
+    "name": "test_no_rewrite_already_prefixed",
+    "kind": "function",
+    "file": "tests/test_hooks.py",
+    "line_start": 29,
+    "line_end": 30,
+    "signature": "test_no_rewrite_already_prefixed()",
+    "docstring": null
+  },
+  {
+    "name": "test_no_rewrite_pytk_alone",
+    "kind": "function",
+    "file": "tests/test_hooks.py",
+    "line_start": 32,
+    "line_end": 33,
+    "signature": "test_no_rewrite_pytk_alone()",
+    "docstring": null
+  },
+  {
+    "name": "test_no_rewrite_unknown_cmd",
+    "kind": "function",
+    "file": "tests/test_hooks.py",
+    "line_start": 35,
+    "line_end": 36,
+    "signature": "test_no_rewrite_unknown_cmd()",
+    "docstring": null
+  },
+  {
+    "name": "test_no_rewrite_empty",
+    "kind": "function",
+    "file": "tests/test_hooks.py",
+    "line_start": 38,
+    "line_end": 39,
+    "signature": "test_no_rewrite_empty()",
+    "docstring": null
+  },
+  {
+    "name": "test_no_rewrite_echo",
+    "kind": "function",
+    "file": "tests/test_hooks.py",
+    "line_start": 41,
+    "line_end": 42,
+    "signature": "test_no_rewrite_echo()",
+    "docstring": null
+  },
+  {
+    "name": "test_rewrite_command",
+    "kind": "function",
+    "file": "tests/test_hooks.py",
+    "line_start": 47,
+    "line_end": 48,
+    "signature": "test_rewrite_command()",
+    "docstring": null
+  },
+  {
+    "name": "test_rewrite_command_strips_whitespace",
+    "kind": "function",
+    "file": "tests/test_hooks.py",
+    "line_start": 50,
+    "line_end": 51,
+    "signature": "test_rewrite_command_strips_whitespace()",
+    "docstring": null
+  },
+  {
+    "name": "_run_main",
+    "kind": "function",
+    "file": "tests/test_hooks.py",
+    "line_start": 56,
+    "line_end": 66,
+    "signature": "_run_main(stdin_data)",
+    "docstring": "Run main() with given stdin, return (stdout, exit_code)."
+  },
+  {
+    "name": "test_main_rewrites_bash_tool",
+    "kind": "function",
+    "file": "tests/test_hooks.py",
+    "line_start": 69,
+    "line_end": 74,
+    "signature": "test_main_rewrites_bash_tool()",
+    "docstring": null
+  },
+  {
+    "name": "test_main_passthrough_already_prefixed",
+    "kind": "function",
+    "file": "tests/test_hooks.py",
+    "line_start": 77,
+    "line_end": 81,
+    "signature": "test_main_passthrough_already_prefixed()",
+    "docstring": null
+  },
+  {
+    "name": "test_main_passthrough_non_bash",
+    "kind": "function",
+    "file": "tests/test_hooks.py",
+    "line_start": 84,
+    "line_end": 88,
+    "signature": "test_main_passthrough_non_bash()",
+    "docstring": null
+  },
+  {
+    "name": "test_main_invalid_json",
+    "kind": "function",
+    "file": "tests/test_hooks.py",
+    "line_start": 91,
+    "line_end": 93,
+    "signature": "test_main_invalid_json()",
+    "docstring": null
+  },
+  {
+    "name": "test_main_preserves_description",
+    "kind": "function",
+    "file": "tests/test_hooks.py",
+    "line_start": 96,
+    "line_end": 105,
+    "signature": "test_main_preserves_description()",
+    "docstring": null
+  },
+  {
+    "name": "test_cli_init_claude_hook_creates_files",
+    "kind": "function",
+    "file": "tests/test_hooks.py",
+    "line_start": 114,
+    "line_end": 124,
+    "signature": "test_cli_init_claude_hook_creates_files(tmp_path)",
+    "docstring": null
+  },
+  {
+    "name": "test_cli_init_claude_hook_merges_settings",
+    "kind": "function",
+    "file": "tests/test_hooks.py",
+    "line_start": 127,
+    "line_end": 144,
+    "signature": "test_cli_init_claude_hook_merges_settings(tmp_path)",
+    "docstring": null
+  },
+  {
+    "name": "test_cli_init_claude_hook_no_duplicate",
+    "kind": "function",
+    "file": "tests/test_hooks.py",
+    "line_start": 147,
+    "line_end": 160,
+    "signature": "test_cli_init_claude_hook_no_duplicate(tmp_path)",
+    "docstring": null
+  },
+  {
+    "name": "test_cli_hook_run_claude",
+    "kind": "function",
+    "file": "tests/test_hooks.py",
+    "line_start": 163,
+    "line_end": 170,
+    "signature": "test_cli_hook_run_claude(tmp_path)",
+    "docstring": "Test pytk hook run-claude rewrites commands."
+  },
+  {
+    "name": "tests.test_init_agents",
+    "kind": "module",
+    "file": "tests/test_init_agents.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "test_init_windsurf_creates_file",
+    "kind": "function",
+    "file": "tests/test_init_agents.py",
+    "line_start": 11,
+    "line_end": 17,
+    "signature": "test_init_windsurf_creates_file(tmp_path)",
+    "docstring": null
+  },
+  {
+    "name": "test_init_windsurf_appends_to_existing",
+    "kind": "function",
+    "file": "tests/test_init_agents.py",
+    "line_start": 20,
+    "line_end": 26,
+    "signature": "test_init_windsurf_appends_to_existing(tmp_path)",
+    "docstring": null
+  },
+  {
+    "name": "test_init_windsurf_skips_if_already_present",
+    "kind": "function",
+    "file": "tests/test_init_agents.py",
+    "line_start": 29,
+    "line_end": 35,
+    "signature": "test_init_windsurf_skips_if_already_present(tmp_path)",
+    "docstring": null
+  },
+  {
+    "name": "test_init_gemini_creates_hook_and_settings",
+    "kind": "function",
+    "file": "tests/test_init_agents.py",
+    "line_start": 40,
+    "line_end": 49,
+    "signature": "test_init_gemini_creates_hook_and_settings(tmp_path)",
+    "docstring": null
+  },
+  {
+    "name": "test_init_gemini_merges_existing_settings",
+    "kind": "function",
+    "file": "tests/test_init_agents.py",
+    "line_start": 52,
+    "line_end": 60,
+    "signature": "test_init_gemini_merges_existing_settings(tmp_path)",
+    "docstring": null
+  },
+  {
+    "name": "test_init_gemini_no_duplicate",
+    "kind": "function",
+    "file": "tests/test_init_agents.py",
+    "line_start": 63,
+    "line_end": 71,
+    "signature": "test_init_gemini_no_duplicate(tmp_path)",
+    "docstring": null
+  },
+  {
+    "name": "tests.test_runner",
+    "kind": "module",
+    "file": "tests/test_runner.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "test_registry_routes_git",
+    "kind": "function",
+    "file": "tests/test_runner.py",
+    "line_start": 9,
+    "line_end": 11,
+    "signature": "test_registry_routes_git()",
+    "docstring": null
+  },
+  {
+    "name": "test_registry_routes_pytest",
+    "kind": "function",
+    "file": "tests/test_runner.py",
+    "line_start": 14,
+    "line_end": 16,
+    "signature": "test_registry_routes_pytest()",
+    "docstring": null
+  },
+  {
+    "name": "test_registry_routes_ls",
+    "kind": "function",
+    "file": "tests/test_runner.py",
+    "line_start": 19,
+    "line_end": 21,
+    "signature": "test_registry_routes_ls()",
+    "docstring": null
+  },
+  {
+    "name": "test_registry_routes_grep",
+    "kind": "function",
+    "file": "tests/test_runner.py",
+    "line_start": 24,
+    "line_end": 26,
+    "signature": "test_registry_routes_grep()",
+    "docstring": null
+  },
+  {
+    "name": "test_registry_routes_cat",
+    "kind": "function",
+    "file": "tests/test_runner.py",
+    "line_start": 29,
+    "line_end": 31,
+    "signature": "test_registry_routes_cat()",
+    "docstring": null
+  },
+  {
+    "name": "test_registry_no_match",
+    "kind": "function",
+    "file": "tests/test_runner.py",
+    "line_start": 34,
+    "line_end": 36,
+    "signature": "test_registry_no_match()",
+    "docstring": null
+  },
+  {
+    "name": "test_registry_empty_cmd",
+    "kind": "function",
+    "file": "tests/test_runner.py",
+    "line_start": 39,
+    "line_end": 41,
+    "signature": "test_registry_empty_cmd()",
+    "docstring": null
+  },
+  {
+    "name": "tests.test_runner_run",
+    "kind": "module",
+    "file": "tests/test_runner_run.py",
+    "line_start": 1,
+    "line_end": 1,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "test_runner_run_simple",
+    "kind": "function",
+    "file": "tests/test_runner_run.py",
+    "line_start": 4,
+    "line_end": 7,
+    "signature": "test_runner_run_simple()",
+    "docstring": null
+  },
+  {
+    "name": "test_runner_run_exit_code",
+    "kind": "function",
+    "file": "tests/test_runner_run.py",
+    "line_start": 10,
+    "line_end": 12,
+    "signature": "test_runner_run_exit_code()",
+    "docstring": null
+  },
+  {
+    "name": "test_runner_run_nonexistent_command",
+    "kind": "function",
+    "file": "tests/test_runner_run.py",
+    "line_start": 15,
+    "line_end": 17,
+    "signature": "test_runner_run_nonexistent_command()",
+    "docstring": null
+  },
+  {
+    "name": "test_run_filtered_stats",
+    "kind": "function",
+    "file": "tests/test_runner_run.py",
+    "line_start": 20,
+    "line_end": 25,
+    "signature": "test_run_filtered_stats()",
+    "docstring": null
+  },
+  {
+    "name": "test_run_filtered_with_git_filter",
+    "kind": "function",
+    "file": "tests/test_runner_run.py",
+    "line_start": 28,
+    "line_end": 35,
+    "signature": "test_run_filtered_with_git_filter(tmp_path, monkeypatch)",
+    "docstring": "run_filtered on a git command should use GitFilter."
+  },
+  {
+    "name": "activate",
+    "kind": "function",
+    "file": "vscode-extension/src/extension.ts",
+    "line_start": 10,
+    "line_end": null,
+    "signature": "activate(context: vscode.ExtensionContext)",
+    "docstring": null
+  },
+  {
+    "name": "updateStatusBar",
+    "kind": "function",
+    "file": "vscode-extension/src/extension.ts",
+    "line_start": 71,
+    "line_end": null,
+    "signature": "updateStatusBar()",
+    "docstring": null
+  },
+  {
+    "name": "escapeHtml",
+    "kind": "function",
+    "file": "vscode-extension/src/extension.ts",
+    "line_start": 88,
+    "line_end": null,
+    "signature": "escapeHtml(text: string)",
+    "docstring": null
+  },
+  {
+    "name": "deactivate",
+    "kind": "function",
+    "file": "vscode-extension/src/extension.ts",
+    "line_start": 91,
+    "line_end": null,
+    "signature": "deactivate()",
+    "docstring": null
+  },
+  {
+    "name": "FilterEngine",
+    "kind": "class",
+    "file": "vscode-extension/src/filterEngine.ts",
+    "line_start": 6,
+    "line_end": null,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "StatsProvider",
+    "kind": "class",
+    "file": "vscode-extension/src/statsProvider.ts",
+    "line_start": 12,
+    "line_end": null,
+    "signature": null,
+    "docstring": null
+  },
+  {
+    "name": "StatRecord",
+    "kind": "interface",
+    "file": "vscode-extension/src/statsProvider.ts",
+    "line_start": 5,
+    "line_end": null,
+    "signature": null,
+    "docstring": null
+  }
+]

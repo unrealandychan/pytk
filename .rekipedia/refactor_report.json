@@ -1,0 +1,1367 @@
+{
+  "generated_at": "2026-05-23T04:47:41.413088+00:00",
+  "rekipedia_version": "0.17.15",
+  "summary": {
+    "high": 2,
+    "medium": 0,
+    "low": 110
+  },
+  "issues": [
+    {
+      "kind": "god_class",
+      "symbol": "BaseFilter",
+      "file": "src/pytk/filters/base.py",
+      "severity": "high",
+      "metrics": {
+        "lines": 11,
+        "fan_in": 16,
+        "fan_out": 1
+      },
+      "suggestion": "Split `BaseFilter` into smaller, single-responsibility classes",
+      "callers": []
+    },
+    {
+      "kind": "god_class",
+      "symbol": "LintFilter",
+      "file": "src/pytk/filters/lint.py",
+      "severity": "high",
+      "metrics": {
+        "lines": 90,
+        "fan_in": 9,
+        "fan_out": 1
+      },
+      "suggestion": "Split `LintFilter` into smaller, single-responsibility classes",
+      "callers": [
+        "test_matches_ruff",
+        "test_ruff_clean",
+        "test_ruff_with_errors",
+        "test_mypy_clean",
+        "test_mypy_errors",
+        "test_flake8_clean",
+        "test_tsc_clean",
+        "test_tsc_errors",
+        "test_ansi_stripped"
+      ]
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "BaseFilter.filter",
+      "file": "src/pytk/filters/base.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 0
+      },
+      "suggestion": "Remove `BaseFilter.filter` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "BaseFilter.matches",
+      "file": "src/pytk/filters/base.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 0
+      },
+      "suggestion": "Remove `BaseFilter.matches` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "BaseFilter.savings_example",
+      "file": "src/pytk/filters/base.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 0
+      },
+      "suggestion": "Remove `BaseFilter.savings_example` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "CargoFilter._filter_add_update",
+      "file": "src/pytk/filters/cargo.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 21
+      },
+      "suggestion": "Remove `CargoFilter._filter_add_update` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "CargoFilter._filter_build",
+      "file": "src/pytk/filters/cargo.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 26
+      },
+      "suggestion": "Remove `CargoFilter._filter_build` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "CargoFilter._filter_clippy",
+      "file": "src/pytk/filters/cargo.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 5
+      },
+      "suggestion": "Remove `CargoFilter._filter_clippy` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "CargoFilter._filter_run",
+      "file": "src/pytk/filters/cargo.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 4
+      },
+      "suggestion": "Remove `CargoFilter._filter_run` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "CargoFilter._filter_test",
+      "file": "src/pytk/filters/cargo.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 4
+      },
+      "suggestion": "Remove `CargoFilter._filter_test` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "CargoFilter.filter",
+      "file": "src/pytk/filters/cargo.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 7
+      },
+      "suggestion": "Remove `CargoFilter.filter` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "CargoFilter.matches",
+      "file": "src/pytk/filters/cargo.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 2
+      },
+      "suggestion": "Remove `CargoFilter.matches` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "CargoFilter.savings_example",
+      "file": "src/pytk/filters/cargo.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 0
+      },
+      "suggestion": "Remove `CargoFilter.savings_example` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "CatFilter.filter",
+      "file": "src/pytk/filters/cat.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 12
+      },
+      "suggestion": "Remove `CatFilter.filter` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "CatFilter.matches",
+      "file": "src/pytk/filters/cat.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 2
+      },
+      "suggestion": "Remove `CatFilter.matches` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "CatFilter.savings_example",
+      "file": "src/pytk/filters/cat.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 0
+      },
+      "suggestion": "Remove `CatFilter.savings_example` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "CurlFilter._filter_curl",
+      "file": "src/pytk/filters/curl.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 23
+      },
+      "suggestion": "Remove `CurlFilter._filter_curl` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "CurlFilter._filter_httpie",
+      "file": "src/pytk/filters/curl.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 10
+      },
+      "suggestion": "Remove `CurlFilter._filter_httpie` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "CurlFilter._filter_wget",
+      "file": "src/pytk/filters/curl.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 7
+      },
+      "suggestion": "Remove `CurlFilter._filter_wget` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "CurlFilter._maybe_truncate_json",
+      "file": "src/pytk/filters/curl.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 13
+      },
+      "suggestion": "Remove `CurlFilter._maybe_truncate_json` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "CurlFilter.filter",
+      "file": "src/pytk/filters/curl.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 5
+      },
+      "suggestion": "Remove `CurlFilter.filter` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "CurlFilter.matches",
+      "file": "src/pytk/filters/curl.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 2
+      },
+      "suggestion": "Remove `CurlFilter.matches` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "CurlFilter.savings_example",
+      "file": "src/pytk/filters/curl.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 0
+      },
+      "suggestion": "Remove `CurlFilter.savings_example` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "DockerFilter._filter_build",
+      "file": "src/pytk/filters/docker.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 19
+      },
+      "suggestion": "Remove `DockerFilter._filter_build` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "DockerFilter._filter_compose_action",
+      "file": "src/pytk/filters/docker.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 17
+      },
+      "suggestion": "Remove `DockerFilter._filter_compose_action` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "DockerFilter._filter_images",
+      "file": "src/pytk/filters/docker.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 10
+      },
+      "suggestion": "Remove `DockerFilter._filter_images` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "DockerFilter._filter_inspect",
+      "file": "src/pytk/filters/docker.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 23
+      },
+      "suggestion": "Remove `DockerFilter._filter_inspect` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "DockerFilter._filter_logs",
+      "file": "src/pytk/filters/docker.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 10
+      },
+      "suggestion": "Remove `DockerFilter._filter_logs` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "DockerFilter._filter_ps",
+      "file": "src/pytk/filters/docker.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 11
+      },
+      "suggestion": "Remove `DockerFilter._filter_ps` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "DockerFilter.filter",
+      "file": "src/pytk/filters/docker.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 15
+      },
+      "suggestion": "Remove `DockerFilter.filter` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "DockerFilter.matches",
+      "file": "src/pytk/filters/docker.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 2
+      },
+      "suggestion": "Remove `DockerFilter.matches` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "DockerFilter.savings_example",
+      "file": "src/pytk/filters/docker.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 0
+      },
+      "suggestion": "Remove `DockerFilter.savings_example` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "GitFilter._compress_msg",
+      "file": "src/pytk/filters/git.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 3
+      },
+      "suggestion": "Remove `GitFilter._compress_msg` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "GitFilter._filter_action",
+      "file": "src/pytk/filters/git.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 11
+      },
+      "suggestion": "Remove `GitFilter._filter_action` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "GitFilter._filter_diff",
+      "file": "src/pytk/filters/git.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 7
+      },
+      "suggestion": "Remove `GitFilter._filter_diff` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "GitFilter._filter_log",
+      "file": "src/pytk/filters/git.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 21
+      },
+      "suggestion": "Remove `GitFilter._filter_log` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "GitFilter._filter_status",
+      "file": "src/pytk/filters/git.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 11
+      },
+      "suggestion": "Remove `GitFilter._filter_status` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "GitFilter.filter",
+      "file": "src/pytk/filters/git.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 6
+      },
+      "suggestion": "Remove `GitFilter.filter` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "GitFilter.matches",
+      "file": "src/pytk/filters/git.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 2
+      },
+      "suggestion": "Remove `GitFilter.matches` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "GitFilter.savings_example",
+      "file": "src/pytk/filters/git.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 0
+      },
+      "suggestion": "Remove `GitFilter.savings_example` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "GrepFilter.filter",
+      "file": "src/pytk/filters/grep.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 26
+      },
+      "suggestion": "Remove `GrepFilter.filter` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "GrepFilter.matches",
+      "file": "src/pytk/filters/grep.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 2
+      },
+      "suggestion": "Remove `GrepFilter.matches` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "GrepFilter.savings_example",
+      "file": "src/pytk/filters/grep.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 0
+      },
+      "suggestion": "Remove `GrepFilter.savings_example` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "KubectlFilter._filter_action",
+      "file": "src/pytk/filters/kubectl.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 3
+      },
+      "suggestion": "Remove `KubectlFilter._filter_action` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "KubectlFilter._filter_describe",
+      "file": "src/pytk/filters/kubectl.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 14
+      },
+      "suggestion": "Remove `KubectlFilter._filter_describe` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "KubectlFilter._filter_events",
+      "file": "src/pytk/filters/kubectl.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 16
+      },
+      "suggestion": "Remove `KubectlFilter._filter_events` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "KubectlFilter._filter_get",
+      "file": "src/pytk/filters/kubectl.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 5
+      },
+      "suggestion": "Remove `KubectlFilter._filter_get` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "KubectlFilter._filter_get_pods",
+      "file": "src/pytk/filters/kubectl.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 18
+      },
+      "suggestion": "Remove `KubectlFilter._filter_get_pods` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "KubectlFilter._filter_logs",
+      "file": "src/pytk/filters/kubectl.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 16
+      },
+      "suggestion": "Remove `KubectlFilter._filter_logs` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "KubectlFilter._filter_rollout",
+      "file": "src/pytk/filters/kubectl.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 2
+      },
+      "suggestion": "Remove `KubectlFilter._filter_rollout` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "KubectlFilter.filter",
+      "file": "src/pytk/filters/kubectl.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 9
+      },
+      "suggestion": "Remove `KubectlFilter.filter` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "KubectlFilter.matches",
+      "file": "src/pytk/filters/kubectl.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 2
+      },
+      "suggestion": "Remove `KubectlFilter.matches` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "KubectlFilter.savings_example",
+      "file": "src/pytk/filters/kubectl.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 0
+      },
+      "suggestion": "Remove `KubectlFilter.savings_example` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "LintFilter._filter_flake8",
+      "file": "src/pytk/filters/lint.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 3
+      },
+      "suggestion": "Remove `LintFilter._filter_flake8` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "LintFilter._filter_mypy",
+      "file": "src/pytk/filters/lint.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 7
+      },
+      "suggestion": "Remove `LintFilter._filter_mypy` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "LintFilter._filter_pylint",
+      "file": "src/pytk/filters/lint.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 6
+      },
+      "suggestion": "Remove `LintFilter._filter_pylint` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "LintFilter._filter_ruff",
+      "file": "src/pytk/filters/lint.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 5
+      },
+      "suggestion": "Remove `LintFilter._filter_ruff` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "LintFilter._filter_tsc",
+      "file": "src/pytk/filters/lint.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 5
+      },
+      "suggestion": "Remove `LintFilter._filter_tsc` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "LintFilter.filter",
+      "file": "src/pytk/filters/lint.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 7
+      },
+      "suggestion": "Remove `LintFilter.filter` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "LintFilter.matches",
+      "file": "src/pytk/filters/lint.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 2
+      },
+      "suggestion": "Remove `LintFilter.matches` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "LintFilter.savings_example",
+      "file": "src/pytk/filters/lint.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 0
+      },
+      "suggestion": "Remove `LintFilter.savings_example` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "LsFilter._filter_find",
+      "file": "src/pytk/filters/ls.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 1
+      },
+      "suggestion": "Remove `LsFilter._filter_find` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "LsFilter._filter_ls",
+      "file": "src/pytk/filters/ls.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 6
+      },
+      "suggestion": "Remove `LsFilter._filter_ls` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "LsFilter._truncate",
+      "file": "src/pytk/filters/ls.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 5
+      },
+      "suggestion": "Remove `LsFilter._truncate` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "LsFilter.filter",
+      "file": "src/pytk/filters/ls.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 6
+      },
+      "suggestion": "Remove `LsFilter.filter` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "LsFilter.matches",
+      "file": "src/pytk/filters/ls.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 2
+      },
+      "suggestion": "Remove `LsFilter.matches` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "LsFilter.savings_example",
+      "file": "src/pytk/filters/ls.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 0
+      },
+      "suggestion": "Remove `LsFilter.savings_example` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "MakeFilter.filter",
+      "file": "src/pytk/filters/make.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 6
+      },
+      "suggestion": "Remove `MakeFilter.filter` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "MakeFilter.matches",
+      "file": "src/pytk/filters/make.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 2
+      },
+      "suggestion": "Remove `MakeFilter.matches` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "MakeFilter.savings_example",
+      "file": "src/pytk/filters/make.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 0
+      },
+      "suggestion": "Remove `MakeFilter.savings_example` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "NpmFilter._filter_audit",
+      "file": "src/pytk/filters/npm.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 10
+      },
+      "suggestion": "Remove `NpmFilter._filter_audit` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "NpmFilter._filter_install",
+      "file": "src/pytk/filters/npm.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 11
+      },
+      "suggestion": "Remove `NpmFilter._filter_install` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "NpmFilter._filter_npx",
+      "file": "src/pytk/filters/npm.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 7
+      },
+      "suggestion": "Remove `NpmFilter._filter_npx` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "NpmFilter._filter_run",
+      "file": "src/pytk/filters/npm.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 11
+      },
+      "suggestion": "Remove `NpmFilter._filter_run` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "NpmFilter._filter_test",
+      "file": "src/pytk/filters/npm.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 4
+      },
+      "suggestion": "Remove `NpmFilter._filter_test` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "NpmFilter.filter",
+      "file": "src/pytk/filters/npm.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 8
+      },
+      "suggestion": "Remove `NpmFilter.filter` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "NpmFilter.matches",
+      "file": "src/pytk/filters/npm.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 2
+      },
+      "suggestion": "Remove `NpmFilter.matches` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "NpmFilter.savings_example",
+      "file": "src/pytk/filters/npm.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 0
+      },
+      "suggestion": "Remove `NpmFilter.savings_example` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "PackageManagerFilter.filter",
+      "file": "src/pytk/filters/package_manager.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 13
+      },
+      "suggestion": "Remove `PackageManagerFilter.filter` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "PackageManagerFilter.matches",
+      "file": "src/pytk/filters/package_manager.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 2
+      },
+      "suggestion": "Remove `PackageManagerFilter.matches` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "PackageManagerFilter.savings_example",
+      "file": "src/pytk/filters/package_manager.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 0
+      },
+      "suggestion": "Remove `PackageManagerFilter.savings_example` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "PoetryFilter._filter_install",
+      "file": "src/pytk/filters/poetry.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 5
+      },
+      "suggestion": "Remove `PoetryFilter._filter_install` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "PoetryFilter.filter",
+      "file": "src/pytk/filters/poetry.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 6
+      },
+      "suggestion": "Remove `PoetryFilter.filter` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "PoetryFilter.matches",
+      "file": "src/pytk/filters/poetry.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 2
+      },
+      "suggestion": "Remove `PoetryFilter.matches` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "PoetryFilter.savings_example",
+      "file": "src/pytk/filters/poetry.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 0
+      },
+      "suggestion": "Remove `PoetryFilter.savings_example` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "PytkGroup.invoke",
+      "file": "src/pytk/cli.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 18
+      },
+      "suggestion": "Remove `PytkGroup.invoke` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "PytkGroup.parse_args",
+      "file": "src/pytk/cli.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 2
+      },
+      "suggestion": "Remove `PytkGroup.parse_args` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "TerraformFilter.filter",
+      "file": "src/pytk/filters/terraform.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 9
+      },
+      "suggestion": "Remove `TerraformFilter.filter` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "TerraformFilter.matches",
+      "file": "src/pytk/filters/terraform.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 2
+      },
+      "suggestion": "Remove `TerraformFilter.matches` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "TerraformFilter.savings_example",
+      "file": "src/pytk/filters/terraform.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 0
+      },
+      "suggestion": "Remove `TerraformFilter.savings_example` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "UvFilter.filter",
+      "file": "src/pytk/filters/uv.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 19
+      },
+      "suggestion": "Remove `UvFilter.filter` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "UvFilter.matches",
+      "file": "src/pytk/filters/uv.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 2
+      },
+      "suggestion": "Remove `UvFilter.matches` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "UvFilter.savings_example",
+      "file": "src/pytk/filters/uv.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 0
+      },
+      "suggestion": "Remove `UvFilter.savings_example` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "activate",
+      "file": "vscode-extension/src/extension.ts",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 0
+      },
+      "suggestion": "Remove `activate` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "benchmark",
+      "file": "scripts/benchmark.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 31
+      },
+      "suggestion": "Remove `benchmark` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "config",
+      "file": "src/pytk/cli.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 1
+      },
+      "suggestion": "Remove `config` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "config_get",
+      "file": "src/pytk/cli.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 9
+      },
+      "suggestion": "Remove `config_get` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "config_set",
+      "file": "src/pytk/cli.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 16
+      },
+      "suggestion": "Remove `config_set` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "config_show",
+      "file": "src/pytk/cli.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 5
+      },
+      "suggestion": "Remove `config_show` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "deactivate",
+      "file": "vscode-extension/src/extension.ts",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 0
+      },
+      "suggestion": "Remove `deactivate` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "doctor_cmd",
+      "file": "src/pytk/cli.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 3
+      },
+      "suggestion": "Remove `doctor_cmd` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "escapeHtml",
+      "file": "vscode-extension/src/extension.ts",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 0
+      },
+      "suggestion": "Remove `escapeHtml` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "gain",
+      "file": "src/pytk/cli.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 45
+      },
+      "suggestion": "Remove `gain` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "hook",
+      "file": "src/pytk/cli.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 1
+      },
+      "suggestion": "Remove `hook` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "hook_disable",
+      "file": "src/pytk/cli.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 6
+      },
+      "suggestion": "Remove `hook_disable` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "hook_enable",
+      "file": "src/pytk/cli.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 6
+      },
+      "suggestion": "Remove `hook_enable` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "hook_run_claude",
+      "file": "src/pytk/cli.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 2
+      },
+      "suggestion": "Remove `hook_run_claude` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "hook_status_cmd",
+      "file": "src/pytk/cli.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 6
+      },
+      "suggestion": "Remove `hook_status_cmd` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "init_cmd",
+      "file": "src/pytk/cli.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 12
+      },
+      "suggestion": "Remove `init_cmd` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "list_filters",
+      "file": "src/pytk/cli.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 16
+      },
+      "suggestion": "Remove `list_filters` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "passthrough",
+      "file": "src/pytk/cli.py",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 6
+      },
+      "suggestion": "Remove `passthrough` — 0 callers detected",
+      "callers": []
+    },
+    {
+      "kind": "dead_code",
+      "symbol": "updateStatusBar",
+      "file": "vscode-extension/src/extension.ts",
+      "severity": "low",
+      "metrics": {
+        "fan_in": 0,
+        "fan_out": 0
+      },
+      "suggestion": "Remove `updateStatusBar` — 0 callers detected",
+      "callers": []
+    }
+  ]
+}
